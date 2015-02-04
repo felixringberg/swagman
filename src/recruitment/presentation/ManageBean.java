@@ -9,6 +9,6 @@ package recruitment.presentation;
  *
  * @author Felix
  */
-public class NewClass {
+public class ManageBean {
     
 }

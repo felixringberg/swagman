@@ -7,8 +7,8 @@ package recruitment.business;
 
 /**
  *
- * @author Felix
+ * @author Felix Ringberg <felixri at kth.se>
  */
-public class NewClass {
-    
+public interface RecruitmentDTO {
+    int getID();
 }
