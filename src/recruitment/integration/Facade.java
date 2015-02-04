@@ -9,6 +9,6 @@ package recruitment.integration;
  *
  * @author Felix
  */
-public class NewClass {
+public class Facade {
     
 }
