@@ -6,6 +6,7 @@
 package recruitment.business;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,11 +15,12 @@ import javax.persistence.Id;
  *
  * @author Felix
  */
+@Entity
 public class Recruitment implements Serializable, RecruitmentDTO {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO) // vet ej om den behövs
-    int ID;
+    Integer ID;
     
     @Override
     public int getID() {

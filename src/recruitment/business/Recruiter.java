@@ -5,10 +5,19 @@
  */
 package recruitment.business;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  *
  * @author Felix Ringberg <felixri at kth.se>
  */
-public class Recruiter {
-    
+@Entity
+public class Recruiter implements Serializable, RecruiterDTO{
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
 }

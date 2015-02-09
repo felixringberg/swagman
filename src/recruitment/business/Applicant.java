@@ -16,7 +16,7 @@ import javax.persistence.Id;
  * @author Felix Ringberg <felixri at kth.se>
  */
 @Entity
-public class Applicant implements Serializable {
+public class Applicant implements Serializable, ApplicantDTO {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
