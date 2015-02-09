@@ -6,7 +6,7 @@
 package recruitment.integration;
 
 /**
- *
+ * Klassen ska ha nån koppling till databasen. Den ska hämta och lägga upp data.
  * @author Felix
  */
 public class Facade {
