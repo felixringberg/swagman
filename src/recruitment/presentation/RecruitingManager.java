@@ -6,9 +6,11 @@
 package recruitment.presentation;
 
 import java.io.Serializable;
+import javax.ejb.EJB;
 import javax.enterprise.context.ConversationScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
+import recruitment.integration.RecruitingFacade;
 
 /**
  * Har många set- och get-metoder som används av index.html
@@ -17,5 +19,7 @@ import javax.inject.Named;
 @Named("recruitingManager")
 @SessionScoped
 public class RecruitingManager implements Serializable{
-    
+    @EJB
+    private RecruitingFacade recruitingFacade;
+    private Exception error;
 }

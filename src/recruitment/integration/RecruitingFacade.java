@@ -5,10 +5,13 @@
  */
 package recruitment.integration;
 
+import javax.ejb.Stateless;
+
 /**
  * Klassen ska ha nån koppling till databasen. Den ska hämta och lägga upp data.
  * @author Felix
  */
-public class Facade {
+@Stateless
+public class RecruitingFacade {
     
 }
