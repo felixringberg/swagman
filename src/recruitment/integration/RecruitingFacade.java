@@ -22,13 +22,16 @@ public class RecruitingFacade {
     private EntityManager em;
     
     public ApplicantDTO registerApplicant(String firstname, String lastname, 
-            String email, String username, String password) {
+            String dateofbirth, String email, String username, String password){
         if(em.find(Applicant.class, username) != null) {
             throw new EntityExistsException("Account already exists with username " + username);
         }
         else {
-            Applicant newApplicant = new Applicant(firstname, lastname, email, 
-                    username, password);
+            Applicant newApplicant = new Applicant(firstname, lastname, 
+                    dateofbirth, email, username, password);
+            System.out.println("swaggo");
+            System.out.println(newApplicant.getId());
+            System.out.println("aaaaaaaaaaaaaaaaaaaaaadwadwad");
             em.persist(newApplicant);
             return newApplicant;
         }

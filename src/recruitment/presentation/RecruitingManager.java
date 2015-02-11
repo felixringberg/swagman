@@ -25,7 +25,7 @@ public class RecruitingManager implements Serializable{
     private Exception error;
     
     // the registering applicant's info
-    private String rFirstname, rLastname, rEmail, rUsername, rPassword;
+    private String rFirstname, rLastname, rDateofbirth, rEmail, rUsername, rPassword;
     
     private ApplicantDTO currentApplicant;
     
@@ -43,6 +43,13 @@ public class RecruitingManager implements Serializable{
     }
     public String getRLastname() {
         return rLastname;
+    }
+    
+    public void setRDateofbirth(String rDateofbirth) {
+        this.rLastname = rDateofbirth;
+    }
+    public String getRDateofbirth() {
+        return rDateofbirth;
     }
     
     public void setREmail(String rEmail) {
@@ -68,6 +75,6 @@ public class RecruitingManager implements Serializable{
     
     public void createApplicant() {
         currentApplicant = recruitingFacade.registerApplicant(rFirstname, 
-                rLastname, rEmail, rUsername, rPassword);
+                rLastname, rDateofbirth, rEmail, rUsername, rPassword);
     }
 }
