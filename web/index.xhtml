@@ -9,37 +9,26 @@
         <h1>Welcome to the KTH Application Service Index</h1>
 		<p/>
 		<h2>Login</h2>
-		<h:form>
-			Username: 
-			<input type="text" name="loginuser">
-			<br/><br/>
-			Password: 
-			<input type="text" name="loginpass">
-			<br><br>
-			<input type="submit" value="login">
 		
 		<br>
 		<h2>Account Creation</h2>
 		<h:form>
-			First Name: 
-			<input type="text" name="firstname">
+			<h:outputLabel for="firstnamestr" value="First Name: "/>
+			<h:inputText id="firstname" value="#{recruitingManager.rFirstname}"/>
 			<br/><br/>
-			Last Name: 
-			<input type="text" name="lastname">
+			<h:outputLabel for="lastnamestr" value="Last Name: "/> 
+			<h:inputText id="lastname" value="#{recruitingManager.rLastname}"/>
 			<br/><br/>
-			E-mail: 
-			<input type="text" name="email">
+			<h:outputLabel for="emailstr" value="Email: "/> 
+			<h:inputText id="email" value="#{recruitingManager.rEmail}"/>
 			<br/><br/>
-			Username: 
-			<input type="text" name="username">
+			<h:outputLabel for="usernamestr" value="Username: "/> 
+			<h:inputText id="username" value="#{recruitingManager.rUsername}"/>
 			<br/><br/>
-			Password: 
-			<input type="text" name="password">
+			<h:outputLabel for="passwordstr" value="Password: "/> 
+			<h:inputText id="password" value="#{recruitingManager.rPassword}"/>
 			<br/><br/>
-			Confirm Password:
-			<input type="text" name="confpassword">
-			<br/><br/>
-			<input type="submit" value="Submit">
-			
+			<h:commandButton type="Register" action="#{recruitingManager.createApplicant}"/>
+                </h:form>
     </h:body>
 </html>
