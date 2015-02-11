@@ -10,6 +10,7 @@ import javax.ejb.EJB;
 import javax.enterprise.context.ConversationScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
+import recruitment.business.ApplicantDTO;
 import recruitment.integration.RecruitingFacade;
 
 /**
@@ -22,4 +23,44 @@ public class RecruitingManager implements Serializable{
     @EJB
     private RecruitingFacade recruitingFacade;
     private Exception error;
+    
+    // the registering applicant's info
+    private String rFirstname, rLastname, rEmail, rUsername, rPassword;
+    
+    private ApplicantDTO currentApplicant;
+    
+    
+    // Setters and getters for recruiting applicant
+    public void setRFirstname(String rFirstname) {
+        this.rFirstname = rFirstname;
+    }
+    public String getRFirstname() {
+        return rFirstname;
+    }
+    
+    public void setRLastname(String rLastname) {
+        this.rLastname = rLastname;
+    }
+    public String getRLastname() {
+        return rLastname;
+    }
+    
+    public void setREmail(String rEmail) {
+        this.rLastname = rEmail;
+    }
+    public String getREmail() {
+        return rEmail;
+    }
+    
+    public void setRUsername(String rUsername) {
+        this.rUsername = rUsername;
+    }
+    public String getRUsername() {
+        return rUsername;
+    }
+    
+    public void createApplicant() {
+        currentApplicant = recruitingFacade.registerApplicant(rFirstname, 
+                rLastname, rEmail, rUsername, rPassword);
+    }
 }
