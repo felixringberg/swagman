@@ -50,7 +50,7 @@ public class Applicant implements Serializable, ApplicantDTO {
         return lastname;
     }
 
-    public void setLastname(String lastName) {
+    public void setLastname(String lastname) {
         this.lastname = lastname;
     }
     
