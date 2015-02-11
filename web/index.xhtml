@@ -11,19 +11,19 @@
 		<h2>Account Creation</h2>
 		<h:form>
 			<h:outputLabel for="firstnamestr" value="First Name: "/>
-			<h:inputText id="firstname" value="#{recruitingManager.rFirstname}"/>
+			<h:inputText id="firstname" value="#{recruitingManager.RFirstname}"/>
 			<br/><br/>
 			<h:outputLabel for="lastnamestr" value="Last Name: "/> 
-			<h:inputText id="lastname" value="#{recruitingManager.rLastname}"/>
+			<h:inputText id="lastname" value="#{recruitingManager.RLastname}"/>
 			<br/><br/>
 			<h:outputLabel for="emailstr" value="Email: "/> 
-			<h:inputText id="email" value="#{recruitingManager.rEmail}"/>
+			<h:inputText id="email" value="#{recruitingManager.REmail}"/>
 			<br/><br/>
 			<h:outputLabel for="usernamestr" value="Username: "/> 
-			<h:inputText id="username" value="#{recruitingManager.rUsername}"/>
+			<h:inputText id="username" value="#{recruitingManager.RUsername}"/>
 			<br/><br/>
 			<h:outputLabel for="passwordstr" value="Password: "/> 
-			<h:inputText id="password" value="#{recruitingManager.rPassword}"/>
+			<h:inputText id="password" value="#{recruitingManager.RPassword}"/>
 			<br/><br/>
 			<h:commandButton type="Register" action="#{recruitingManager.createApplicant}"/>
                 </h:form>
