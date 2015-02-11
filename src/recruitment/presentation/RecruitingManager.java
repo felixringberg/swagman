@@ -31,31 +31,31 @@ public class RecruitingManager implements Serializable{
     
     
     // Setters and getters for recruiting applicant
-    public void setRFirstname(String rFirstname) {
+    public void setrFirstname(String rFirstname) {
         this.rFirstname = rFirstname;
     }
-    public String getRFirstname() {
+    public String getrFirstname() {
         return rFirstname;
     }
     
-    public void setRLastname(String rLastname) {
+    public void setrLastname(String rLastname) {
         this.rLastname = rLastname;
     }
-    public String getRLastname() {
+    public String getrLastname() {
         return rLastname;
     }
     
-    public void setREmail(String rEmail) {
+    public void setrEmail(String rEmail) {
         this.rLastname = rEmail;
     }
-    public String getREmail() {
+    public String getrEmail() {
         return rEmail;
     }
     
-    public void setRUsername(String rUsername) {
+    public void setrUsername(String rUsername) {
         this.rUsername = rUsername;
     }
-    public String getRUsername() {
+    public String getrUsername() {
         return rUsername;
     }
     
