@@ -29,9 +29,7 @@ public class RecruitingFacade {
         else {
             Applicant newApplicant = new Applicant(firstname, lastname, 
                     dateofbirth, email, username, password);
-            System.out.println("swaggo222");
             System.out.println(newApplicant.getUsername());
-            System.out.println("aaaaaaaaaaaaaaaaaaaaaadwadwad");
             em.persist(newApplicant);
             return newApplicant;
         }
