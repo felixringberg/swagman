@@ -13,6 +13,7 @@ public interface ApplicantDTO {
     public Integer getId();
     public String getFirstname();
     public String getLastname();
+    public String getDateofbirth();
     public String getEmail();
     public String getUsername();
     public String getPassword();

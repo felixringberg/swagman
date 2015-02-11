@@ -22,15 +22,16 @@ public class Applicant implements Serializable, ApplicantDTO {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     
-    private String firstname, lastname, email, username, password;
+    private String firstname, lastname, email, username, password, dateofbirth;
     
     public Applicant() {
         
     }
-    public Applicant(String firstname, String lastname, String email, 
+    public Applicant(String firstname, String lastname, String dateofbirth, String email, 
             String username, String password) {
         this.firstname = firstname;
         this.lastname = lastname;
+        this.dateofbirth = dateofbirth;
         this.email = email;
         this.username = username;
         this.password = password;
@@ -59,6 +60,15 @@ public class Applicant implements Serializable, ApplicantDTO {
 
     public void setLastname(String lastName) {
         this.lastname = lastname;
+    }
+    
+    @Override
+    public String getDateofbirth() {
+        return dateofbirth;
+    }
+    
+    public void setDateofbirth(String dateofbirth){
+        this.dateofbirth = dateofbirth;
     }
 
     @Override
