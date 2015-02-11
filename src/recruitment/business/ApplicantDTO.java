@@ -10,7 +10,6 @@ package recruitment.business;
  * @author Felix Ringberg <felixri at kth.se>
  */
 public interface ApplicantDTO {
-    public Integer getId();
     public String getFirstname();
     public String getLastname();
     public String getDateofbirth();

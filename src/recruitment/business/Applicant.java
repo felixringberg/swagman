@@ -19,10 +19,9 @@ import javax.persistence.Id;
 public class Applicant implements Serializable, ApplicantDTO {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private String username;
     
-    private String firstname, lastname, email, username, password, dateofbirth;
+    private String firstname, lastname, email, password, dateofbirth;
     
     public Applicant() {
         
@@ -35,13 +34,6 @@ public class Applicant implements Serializable, ApplicantDTO {
         this.email = email;
         this.username = username;
         this.password = password;
-    }
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
     
     @Override
@@ -101,7 +93,7 @@ public class Applicant implements Serializable, ApplicantDTO {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (username != null ? username.hashCode() : 0);
         return hash;
     }
 
@@ -112,7 +104,7 @@ public class Applicant implements Serializable, ApplicantDTO {
             return false;
         }
         Applicant other = (Applicant) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.username == null && other.username != null) || (this.username != null && !this.username.equals(other.username))) {
             return false;
         }
         return true;
@@ -120,7 +112,7 @@ public class Applicant implements Serializable, ApplicantDTO {
 
     @Override
     public String toString() {
-        return "recruitment.business.Applicant[ id=" + id + " ]";
+        return "recruitment.business.Applicant[ id=" + username + " ]";
     }
     
 }
