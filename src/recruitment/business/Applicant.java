@@ -21,7 +21,20 @@ public class Applicant implements Serializable, ApplicantDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-
+    
+    private String firstname, lastname, email, username, password;
+    
+    public Applicant() {
+        
+    }
+    public Applicant(String firstname, String lastname, String email, 
+            String username, String password) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+    }
     public Integer getId() {
         return id;
     }
