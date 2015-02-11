@@ -46,14 +46,14 @@ public class RecruitingManager implements Serializable{
     }
     
     public void setRDateofbirth(String rDateofbirth) {
-        this.rLastname = rDateofbirth;
+        this.rDateofbirth = rDateofbirth;
     }
     public String getRDateofbirth() {
         return rDateofbirth;
     }
     
     public void setREmail(String rEmail) {
-        this.rLastname = rEmail;
+        this.rEmail = rEmail;
     }
     public String getREmail() {
         return rEmail;
