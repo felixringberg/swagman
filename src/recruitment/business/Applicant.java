@@ -7,8 +7,6 @@ package recruitment.business;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
@@ -27,7 +25,20 @@ public class Applicant implements Serializable, ApplicantDTO {
         
     }
     public Applicant(String firstname, String lastname, String dateofbirth, String email, 
-            String username, String password) {
+            String username, String password) throws ValidationException {
+        // Validering för lösenord
+        if(password.length() < 6)
+            throw new ValidationException("Password too short");
+        for(int i = 0; i < password.length(); i++)
+            if(!(Character.isDigit(password.charAt(i)) || Character.isLetter(password.charAt(i))))
+               throw new ValidationException("Passwords may only contain letters A-Z, a-z or numbers 0-9");
+        
+        if(username.length() < 6)
+            throw new ValidationException("Password too short");
+        for(int i = 0; i < username.length(); i++)
+            if(!(Character.isDigit(username.charAt(i)) || Character.isLetter(username.charAt(i))))
+               throw new ValidationException("Usernames may only contain letters A-Z, a-z or numbers 0-9");
+        
         this.firstname = firstname;
         this.lastname = lastname;
         this.dateofbirth = dateofbirth;
