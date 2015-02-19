@@ -7,7 +7,19 @@
     </h:head>
     <h:body>
         <h1>Welcome to the KTH Application Service Index</h1>
-		<p/>
+		
+        <p/>
+        <h2>Login</h2>
+        <h:form>
+            <h:outputLabel for="loginuser" value="First Name: "/>
+            <h:inputText id="loginuser" value="#{LogInManager.LUsername}"/>
+            <br/><br/>
+            <h:outputLabel for="loginuser" value="First Name: "/>
+            <h:inputText id="loginuser" value="#{LogInManager.LUsername}"/>
+            <br/><br/>
+            <h:commandButton value="Login" action="#{LogInManager.login}"/>
+        </h:form>
+        <p/>
 		<h2>Account Creation</h2>
 		<h:form>
 			<h:outputLabel for="firstname" value="First Name: "/>
