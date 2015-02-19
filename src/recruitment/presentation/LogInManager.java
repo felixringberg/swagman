@@ -20,4 +20,23 @@ import recruitment.integration.DatabaseFacade;
 public class LogInManager implements Serializable{
     @EJB
     private DatabaseFacade databaseFacade;
+    private String lUsername, lPassword;
+    
+    public void setLUsername(String lUsername) {
+        this.lUsername = lUsername;
+    }
+    public String getLUsername() {
+        return lUsername;
+    }
+    
+    public void setLPassword(String lPassword) {
+        this.lPassword = lPassword;
+    }
+    public String getLPassword() {
+        return lPassword;
+    }
+    
+    public void login() {
+        
+    }
 }
