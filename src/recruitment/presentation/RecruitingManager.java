@@ -20,6 +20,8 @@ import recruitment.integration.DatabaseFacade;
 @Named("recruitingManager")
 @SessionScoped
 public class RecruitingManager implements Serializable{
+    private final String JSFFIX = "";
+    
     @EJB
     private DatabaseFacade databaseFacade;
     private Exception error;
@@ -97,7 +99,7 @@ public class RecruitingManager implements Serializable{
             handleException(e);
         }
         finally {
-            return "";
+            return JSFFIX; // Pga. en bugg måste en tom sträng returneras, aldrig null
         }
     }
 }
