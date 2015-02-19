@@ -29,8 +29,9 @@ public class DatabaseFacade {
         else {
             Applicant newApplicant = new Applicant(firstname, lastname, 
                     dateofbirth, email, username, password);
-            System.out.println(newApplicant.getUsername());
+            
             em.persist(newApplicant);
+            
             return newApplicant;
         }
     }
