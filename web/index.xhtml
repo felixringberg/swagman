@@ -45,9 +45,11 @@
         <h2 class="login">Login</h2>
         <h:form class="loginform">
             <h:outputLabel for="loginuser" value="Username: " class="labelfont"/>
+            <br/>
             <h:inputText id="loginuser" value="#{loginManager.LUsername}"/>
             <br/><br/>
             <h:outputLabel for="loginpass" value="Password: "/>
+            <br/>
             <h:inputText id="loginpass" value="#{loginManager.LPassword}"/>
             <br/><br/>
             <h:commandButton value="Login" action="#{loginManager.login}"/>
@@ -56,21 +58,27 @@
 		<h2 class="craccount">Account Creation</h2>
 		<h:form class="creationform">
 			<h:outputLabel for="firstname" value="First Name: "/>
+                        <br/>
 			<h:inputText id="firstname" value="#{recruitingManager.RFirstname}"/>
 			<br/><br/>
 			<h:outputLabel for="lastname" value="Last Name: "/> 
+                        <br/>
 			<h:inputText id="lastname" value="#{recruitingManager.RLastname}"/>
 			<br/><br/>
 			<h:outputLabel for="dateofbirth" value="Date of Birth: "/> 
+                        <br/>
 			<h:inputText id="dateofbirth" value="#{recruitingManager.RDateofbirth}"/>
                         <br/><br/>
 			<h:outputLabel for="email" value="Email: "/> 
+                        <br/>
 			<h:inputText id="email" value="#{recruitingManager.REmail}"/>
 			<br/><br/>
 			<h:outputLabel for="username" value="Username: "/> 
+                        <br/>
 			<h:inputText id="username" value="#{recruitingManager.RUsername}"/>
 			<br/><br/>
 			<h:outputLabel for="password" value="Password: "/> 
+                        <br/>
 			<h:inputText id="password" value="#{recruitingManager.RPassword}"/>
 			<br/><br/>
 			<h:commandButton value="Register" action="#{recruitingManager.createApplicant}"/>
