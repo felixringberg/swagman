@@ -12,12 +12,12 @@
         <h2>Login</h2>
         <h:form>
             <h:outputLabel for="loginuser" value="First Name: "/>
-            <h:inputText id="loginuser" value="#{LogInManager.LUsername}"/>
+            <h:inputText id="loginuser" value="#{loginManager.LUsername}"/>
             <br/><br/>
             <h:outputLabel for="loginpass" value="First Name: "/>
-            <h:inputText id="loginpass" value="#{LogInManager.LPassword}"/>
+            <h:inputText id="loginpass" value="#{loginManager.LPassword}"/>
             <br/><br/>
-            <h:commandButton value="Login" action="#{LogInManager.login}"/>
+            <h:commandButton value="Login" action="#{loginManager.login}"/>
         </h:form>
         <p/>
 		<h2>Account Creation</h2>
