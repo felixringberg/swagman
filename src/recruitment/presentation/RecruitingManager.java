@@ -73,6 +73,11 @@ public class RecruitingManager implements Serializable{
         return rPassword;
     }
     
+    private void handleException(Exception e) {
+        e.printStackTrace(System.err);
+        error = e;
+    }
+    
     public boolean getSuccess() {
         return error == null;
     }
@@ -81,7 +86,12 @@ public class RecruitingManager implements Serializable{
     }
     
     public void createApplicant() {
-        currentApplicant = databaseFacade.registerApplicant(rFirstname, 
+        try {
+            currentApplicant = databaseFacade.registerApplicant(rFirstname, 
                 rLastname, rDateofbirth, rEmail, rUsername, rPassword);
+        }
+        catch (Exception e) {
+            handleException(e);
+        }
     }
 }
