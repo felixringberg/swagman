@@ -11,7 +11,7 @@ import javax.enterprise.context.ConversationScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import recruitment.business.ApplicantDTO;
-import recruitment.integration.RecruitingFacade;
+import recruitment.integration.DatabaseFacade;
 
 /**
  * Har många set- och get-metoder som används av index.html
@@ -21,7 +21,7 @@ import recruitment.integration.RecruitingFacade;
 @SessionScoped
 public class RecruitingManager implements Serializable{
     @EJB
-    private RecruitingFacade recruitingFacade;
+    private DatabaseFacade databaseFacade;
     private Exception error;
     
     // the registering applicant's info
@@ -74,7 +74,7 @@ public class RecruitingManager implements Serializable{
     }
     
     public void createApplicant() {
-        currentApplicant = recruitingFacade.registerApplicant(rFirstname, 
+        currentApplicant = databaseFacade.registerApplicant(rFirstname, 
                 rLastname, rDateofbirth, rEmail, rUsername, rPassword);
     }
 }

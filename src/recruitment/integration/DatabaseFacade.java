@@ -17,7 +17,7 @@ import recruitment.business.ApplicantDTO;
  * @author Felix
  */
 @Stateless
-public class RecruitingFacade {
+public class DatabaseFacade {
     @PersistenceContext(unitName = "recruitment")
     private EntityManager em;
     
