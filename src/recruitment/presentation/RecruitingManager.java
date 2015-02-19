@@ -73,6 +73,9 @@ public class RecruitingManager implements Serializable{
         return rPassword;
     }
     
+    public boolean getSuccess() {
+        return error == null;
+    }
     public Exception getError() {
         return error;
     }
