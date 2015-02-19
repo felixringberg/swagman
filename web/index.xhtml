@@ -3,25 +3,58 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
+        <style>
+            body{
+                background-image: url(KTHamusementpark.png);
+                background-repeat: no-repeat;
+                background-position: center top;
+            }
+            
+            h2.login{
+                font-size: 150%;
+                font-family: Estrangelo Edessa, Estrangelo Edessa Regular, Arial;
+                position: absolute;
+                left:415px;
+                top:280px;
+            }
+            h2.craccount{
+                 font-size: 150%;
+                font-family: Estrangelo Edessa, Estrangelo Edessa Regular, Arial;
+                position: absolute;
+                left:900px;
+                top:280px;
+            }
+            form.loginform{
+                font-family: Estrangelo Edessa, Estrangelo Edessa Regular, Arial;
+                position: absolute;
+                left:415px;
+                top:350px;
+            }
+            form.creationform{
+                font-family: Estrangelo Edessa, Estrangelo Edessa Regular, Arial;
+                position: absolute;
+                left:900px;
+                top:350px;
+            }
+        </style>
         <title>KTH Application Service Index</title>
     </h:head>
     <h:body>
-        <h1>Welcome to the KTH Application Service Index</h1>
 		
         <p/>
-        <h2>Login</h2>
-        <h:form>
-            <h:outputLabel for="loginuser" value="First Name: "/>
+        <h2 class="login">Login</h2>
+        <h:form class="loginform">
+            <h:outputLabel for="loginuser" value="Username: " class="labelfont"/>
             <h:inputText id="loginuser" value="#{loginManager.LUsername}"/>
             <br/><br/>
-            <h:outputLabel for="loginpass" value="First Name: "/>
+            <h:outputLabel for="loginpass" value="Password: "/>
             <h:inputText id="loginpass" value="#{loginManager.LPassword}"/>
             <br/><br/>
             <h:commandButton value="Login" action="#{loginManager.login}"/>
         </h:form>
         <p/>
-		<h2>Account Creation</h2>
-		<h:form>
+		<h2 class="craccount">Account Creation</h2>
+		<h:form class="creationform">
 			<h:outputLabel for="firstname" value="First Name: "/>
 			<h:inputText id="firstname" value="#{recruitingManager.RFirstname}"/>
 			<br/><br/>
