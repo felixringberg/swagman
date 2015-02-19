@@ -26,18 +26,19 @@ public class Applicant implements Serializable, ApplicantDTO {
     }
     public Applicant(String firstname, String lastname, String dateofbirth, String email, 
             String username, String password) throws ValidationException {
-        // Validering för lösenord
-        if(password.length() < 6)
-            throw new ValidationException("Password too short");
-        for(int i = 0; i < password.length(); i++)
-            if(!(Character.isDigit(password.charAt(i)) || Character.isLetter(password.charAt(i))))
-               throw new ValidationException("Passwords may only contain letters A-Z, a-z or numbers 0-9");
-        
+        // Username validation
         if(username.length() < 6)
             throw new ValidationException("Password too short");
         for(int i = 0; i < username.length(); i++)
             if(!(Character.isDigit(username.charAt(i)) || Character.isLetter(username.charAt(i))))
                throw new ValidationException("Usernames may only contain letters A-Z, a-z or numbers 0-9");
+        
+        // Password validation
+        if(password.length() < 6)
+            throw new ValidationException("Password too short");
+        for(int i = 0; i < password.length(); i++)
+            if(!(Character.isDigit(password.charAt(i)) || Character.isLetter(password.charAt(i))))
+               throw new ValidationException("Passwords may only contain letters A-Z, a-z or numbers 0-9");
         
         this.firstname = firstname;
         this.lastname = lastname;
@@ -52,26 +53,14 @@ public class Applicant implements Serializable, ApplicantDTO {
         return firstname;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
     @Override
     public String getLastname() {
         return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
     }
     
     @Override
     public String getDateofbirth() {
         return dateofbirth;
-    }
-    
-    public void setDateofbirth(String dateofbirth){
-        this.dateofbirth = dateofbirth;
     }
 
     @Override
@@ -79,26 +68,14 @@ public class Applicant implements Serializable, ApplicantDTO {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     @Override
     public String getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     @Override
     public String getPassword() {
         return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     @Override
@@ -125,5 +102,4 @@ public class Applicant implements Serializable, ApplicantDTO {
     public String toString() {
         return "recruitment.business.Applicant[ id=" + username + " ]";
     }
-    
 }
