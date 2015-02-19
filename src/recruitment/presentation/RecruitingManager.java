@@ -73,6 +73,10 @@ public class RecruitingManager implements Serializable{
         return rPassword;
     }
     
+    public Exception getError() {
+        return error;
+    }
+    
     public void createApplicant() {
         currentApplicant = databaseFacade.registerApplicant(rFirstname, 
                 rLastname, rDateofbirth, rEmail, rUsername, rPassword);
