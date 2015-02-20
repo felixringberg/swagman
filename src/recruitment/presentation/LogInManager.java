@@ -21,6 +21,7 @@ public class LogInManager implements Serializable{
     @EJB
     private DatabaseFacade databaseFacade;
     private String lUsername, lPassword;
+    private Exception error;
     
     public void setLUsername(String lUsername) {
         this.lUsername = lUsername;
@@ -36,7 +37,20 @@ public class LogInManager implements Serializable{
         return lPassword;
     }
     
-    public void login() {
+    private void handleException(Exception e) {
+        e.printStackTrace(System.err);
+        error = e;
+    }
+    
+    public String login() {
+        String result = "";
+        try {
+            result = databaseFacade.authenticateUser(lUsername, lPassword);
+        }
+        catch (Exception e) {
+            handleException(e);
+        }
         
+        return result;
     }
 }

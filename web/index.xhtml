@@ -3,105 +3,58 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
-        <style>
-            body{
-                background-image: url(KTHamusementpark.png);
-                background-repeat: no-repeat;
-                background-position: center top;
-            }
-            
-            #contentbox{
-                margin-top: 280px;
-                margin-left: auto;
-                margin-right: auto;
-                width: 1075px;
-                height: 600px;
-                padding-left: 25px;
-            }
-            
-            #innercontent{
-                width: 350px;
-                float: left;
-            }
-            
-            h2.login{
-                font-size: 150%;
-                font-family: Estrangelo Edessa, Estrangelo Edessa Regular, Arial;
-                //position: absolute;
-                //left:415px;
-                //top:280px;
-            }
-            h2.craccount{
-                 font-size: 150%;
-                font-family: Estrangelo Edessa, Estrangelo Edessa Regular, Arial;
-                //position: absolute;
-                //left:900px;
-                //top:280px;
-            }
-            form.loginform{
-                font-family: Estrangelo Edessa, Estrangelo Edessa Regular, Arial;
-                //position: absolute;
-                //left:415px;
-                //top:350px;
-            }
-            form.creationform{
-                font-family: Estrangelo Edessa, Estrangelo Edessa Regular, Arial;
-                //position: absolute;
-                //left:900px;
-                //top:350px;
-            }
-        </style>
         <title>KTH Application Service Index</title>
+
+        <link href="layout.css" rel="stylesheet" type="text/css"/>
     </h:head>
     <h:body>
-	<div id="contentbox">
-            
-        <div id="innercontent">
-        <p/>
-        <h2 class="login">Login</h2>
-        <h:form class="loginform">
-            <h:outputLabel for="loginuser" value="Username: " class="labelfont"/>
-            <br/>
-            <h:inputText id="loginuser" value="#{loginManager.LUsername}"/>
-            <br/><br/>
-            <h:outputLabel for="loginpass" value="Password: "/>
-            <br/>
-            <h:inputText id="loginpass" value="#{loginManager.LPassword}"/>
-            <br/><br/>
-            <h:commandButton value="Login" action="#{loginManager.login}"/>
-        </h:form>
-        <p/>
-        </div>
-        <div id="innercontent">
-		<h2 class="craccount">Account Creation</h2>
-		<h:form class="creationform">
-			<h:outputLabel for="firstname" value="First Name: "/>
-                        <br/>
-			<h:inputText id="firstname" value="#{recruitingManager.RFirstname}"/>
-			<br/><br/>
-			<h:outputLabel for="lastname" value="Last Name: "/> 
-                        <br/>
-			<h:inputText id="lastname" value="#{recruitingManager.RLastname}"/>
-			<br/><br/>
-			<h:outputLabel for="dateofbirth" value="Date of Birth: "/> 
-                        <br/>
-			<h:inputText id="dateofbirth" value="#{recruitingManager.RDateofbirth}"/>
-                        <br/><br/>
-			<h:outputLabel for="email" value="Email: "/> 
-                        <br/>
-			<h:inputText id="email" value="#{recruitingManager.REmail}"/>
-			<br/><br/>
-			<h:outputLabel for="username" value="Username: "/> 
-                        <br/>
-			<h:inputText id="username" value="#{recruitingManager.RUsername}"/>
-			<br/><br/>
-			<h:outputLabel for="password" value="Password: "/> 
-                        <br/>
-			<h:inputText id="password" value="#{recruitingManager.RPassword}"/>
-			<br/><br/>
-			<h:commandButton value="Register" action="#{recruitingManager.createApplicant}"/>
+        <div id="contentbox">
+            <div id="innercontent">
+                <p/>
+                <h2 class="headline1">Login</h2>
+                <h:form class="loginform">
+                    <h:outputLabel for="loginuser" value="Username: " class="labelfont"/>
+                    <br/>
+                    <h:inputText id="loginuser" value="#{loginManager.LUsername}"/>
+                    <br/><br/>
+                    <h:outputLabel for="loginpass" value="Password: "/>
+                    <br/>
+                    <h:inputSecret id="loginpass" value="#{loginManager.LPassword}"/>
+                    <br/><br/>
+                    <h:commandButton value="Login" action="#{loginManager.login}"/>
                 </h:form>
-        </div>
+                <p/>
+            </div>
+            <div id="innercontent">
+                <h2 class="headline1">Account Creation</h2>
+                <h:form class="creationform">
+                    <h:outputLabel for="firstname" value="First Name: "/>
+                    <br/>
+                    <h:inputText id="firstname" value="#{recruitingManager.RFirstname}"/>
+                    <br/><br/>
+                    <h:outputLabel for="lastname" value="Last Name: "/> 
+                    <br/>
+                    <h:inputText id="lastname" value="#{recruitingManager.RLastname}"/>
+                    <br/><br/>
+                    <h:outputLabel for="dateofbirth" value="Date of Birth: "/> 
+                    <br/>
+                    <h:inputText id="dateofbirth" value="#{recruitingManager.RDateofbirth}"/>
+                    <br/><br/>
+                    <h:outputLabel for="email" value="Email: "/> 
+                    <br/>
+                    <h:inputText id="email" value="#{recruitingManager.REmail}"/>
+                    <br/><br/>
+                    <h:outputLabel for="username" value="Username: "/> 
+                    <br/>
+                    <h:inputText id="username" value="#{recruitingManager.RUsername}"/>
+                    <br/><br/>
+                    <h:outputLabel for="password" value="Password: "/> 
+                    <br/>
+                    <h:inputText id="password" value="#{recruitingManager.RPassword}"/>
+                    <br/><br/>
+                    <h:commandButton value="Register" action="#{recruitingManager.createApplicant}"/>
+                </h:form>
+            </div>
         </div>
     </h:body>
 </html>

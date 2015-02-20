@@ -36,4 +36,14 @@ public class DatabaseFacade {
             return newApplicant;
         }
     }
+    
+    public String authenticateUser(String username, String password) throws ValidationException {
+        String dbpassword = em.createQuery("SELECT password FROM Applicant a WHERE a.username = '" + username
+                        +  "'", String.class).getSingleResult();
+        
+        if(dbpassword.equals(password))
+            return "home";
+        else
+            return "";
+    }
 }
