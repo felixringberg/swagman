@@ -37,13 +37,12 @@ public class DatabaseFacade {
         }
     }
     
-    public String authenticateUser(String username, String password) throws ValidationException {
-        String dbpassword = em.createQuery("SELECT password FROM Applicant a WHERE a.username = '" + username
-                        +  "'", String.class).getSingleResult();
+    public ApplicantDTO authenticateUser(String username, String password) throws ValidationException {
+        Applicant foundApplicant =  em.find(Applicant.class, username);
         
-        if(dbpassword.equals(password))
-            return "home";
+        if(foundApplicant.getPassword().equals(password))
+            return foundApplicant;
         else
-            return "";
+            return null;
     }
 }

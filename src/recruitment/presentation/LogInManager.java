@@ -9,6 +9,7 @@ import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
+import recruitment.business.ApplicantDTO;
 import recruitment.integration.DatabaseFacade;
 
 /**
@@ -18,10 +19,13 @@ import recruitment.integration.DatabaseFacade;
 @Named("loginManager")
 @SessionScoped
 public class LogInManager implements Serializable{
+    private final String JSFFIX = "";
     @EJB
     private DatabaseFacade databaseFacade;
     private String lUsername, lPassword;
     private Exception error;
+    
+    private ApplicantDTO currentApplicant;
     
     public void setLUsername(String lUsername) {
         this.lUsername = lUsername;
@@ -42,15 +46,21 @@ public class LogInManager implements Serializable{
         error = e;
     }
     
+    public void setCurrentApplicant(ApplicantDTO currentApplicant) {
+        this.currentApplicant = currentApplicant;
+    }
+    public ApplicantDTO getCurrentApplicant() {
+        return currentApplicant;
+    }
+    
     public String login() {
-        String result = "";
         try {
-            result = databaseFacade.authenticateUser(lUsername, lPassword);
+            currentApplicant = databaseFacade.authenticateUser(lUsername, lPassword);
         }
         catch (Exception e) {
             handleException(e);
         }
         
-        return result;
+        return JSFFIX;
     }
 }
