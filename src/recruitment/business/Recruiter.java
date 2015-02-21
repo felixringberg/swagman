@@ -18,8 +18,6 @@ import javax.persistence.Id;
 @Entity
 public class Recruiter implements Serializable, RecruiterDTO{
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
     private String username;
     private String password;
 
@@ -27,18 +25,8 @@ public class Recruiter implements Serializable, RecruiterDTO{
     }
     
     public Recruiter(Integer id, String username, String password) {
-        this.id = id;
         this.username = username;
         this.password = password;
-    }
-    
-    @Override
-    public Integer getId() {
-        return id;
-    }
-    
-    public void setId(Integer id){
-        this.id = id;
     }
     
     @Override

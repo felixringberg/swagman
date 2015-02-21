@@ -21,7 +21,8 @@
                     <br/>
                     <h:inputSecret id="loginpass" value="#{loginManager.LPassword}"/>
                     <br/><br/>
-                    <h:commandButton value="Login" action="#{loginManager.login}"/>
+                    <h:commandButton value="Login as applicant" action="#{loginManager.loginApplicant}"/>
+                    <h:commandButton value="Login as recruiter" action="#{loginManager.loginRecruiter}"/>
                 </h:form>
                 <p/>
             </div>

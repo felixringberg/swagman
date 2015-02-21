@@ -11,6 +11,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import recruitment.business.Applicant;
 import recruitment.business.ApplicantDTO;
+import recruitment.business.Recruiter;
+import recruitment.business.RecruiterDTO;
 import recruitment.business.ValidationException;
 
 /**
@@ -37,12 +39,21 @@ public class DatabaseFacade {
         }
     }
     
-    public ApplicantDTO authenticateUser(String username, String password) throws ValidationException {
+    public ApplicantDTO findApplicant(String username, String password) throws ValidationException {
         Applicant foundApplicant =  em.find(Applicant.class, username);
         
-        if(foundApplicant.getPassword().equals(password))
+        if(foundApplicant != null && foundApplicant.getPassword().equals(password))
             return foundApplicant;
         else
-            return null;
+            throw new ValidationException("Wrong username or password");
+    }
+    
+    public RecruiterDTO findRecruiter(String username, String password) throws ValidationException {
+        Recruiter foundRecruiter =  em.find(Recruiter.class, username);
+        
+        if(foundRecruiter != null && foundRecruiter.getPassword().equals(password))
+            return foundRecruiter;
+        else
+            throw new ValidationException("Wrong username or password");
     }
 }

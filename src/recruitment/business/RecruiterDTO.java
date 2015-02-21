@@ -10,7 +10,6 @@ package recruitment.business;
  * @author Felix Ringberg <felixri at kth.se>
  */
 public interface RecruiterDTO {
-    public Integer getId();
     public String getUsername();
     public String getPassword();
 }

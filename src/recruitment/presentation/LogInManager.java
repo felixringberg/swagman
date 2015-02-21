@@ -10,6 +10,7 @@ import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import recruitment.business.ApplicantDTO;
+import recruitment.business.RecruiterDTO;
 import recruitment.integration.DatabaseFacade;
 
 /**
@@ -26,6 +27,7 @@ public class LogInManager implements Serializable{
     private Exception error;
     
     private ApplicantDTO currentApplicant;
+    private RecruiterDTO currentRecruiter;
     
     public void setLUsername(String lUsername) {
         this.lUsername = lUsername;
@@ -41,6 +43,17 @@ public class LogInManager implements Serializable{
         return lPassword;
     }
     
+    public boolean getSuccess() {
+        return error == null;
+    }
+    
+    public void setError(Exception error) {
+        this.error = error;
+    }
+    public Exception getError() {
+        return error;
+    }
+    
     private void handleException(Exception e) {
         e.printStackTrace(System.err);
         error = e;
@@ -53,9 +66,27 @@ public class LogInManager implements Serializable{
         return currentApplicant;
     }
     
-    public String login() {
+    public void setCurrentRecruiter(RecruiterDTO currentRecruiter) {
+        this.currentRecruiter = currentRecruiter;
+    }
+    public RecruiterDTO getCurrentRecruiter() {
+        return currentRecruiter;
+    }
+    
+    public String loginApplicant() {
         try {
-            currentApplicant = databaseFacade.authenticateUser(lUsername, lPassword);
+            currentApplicant = databaseFacade.findApplicant(lUsername, lPassword);
+        }
+        catch (Exception e) {
+            handleException(e);
+        }
+        
+        return JSFFIX;
+    }
+    
+    public String loginRecruiter() {
+        try {
+            currentRecruiter = databaseFacade.findRecruiter(lUsername, lPassword);
         }
         catch (Exception e) {
             handleException(e);
