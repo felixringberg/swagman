@@ -73,6 +73,7 @@ public class ApplicantManager implements Serializable{
         try {
             error = null;
             currentApplicant = databaseFacade.findApplicant(lUsername, lPassword);
+            return "success";
         }
         catch (Exception e) {
             handleException(e);
@@ -84,7 +85,7 @@ public class ApplicantManager implements Serializable{
     public String logout() {
         currentApplicant = null;
         
-        return JSFFIX;
+        return "success";
     }
     
     // Setters and getters for recruiting applicant

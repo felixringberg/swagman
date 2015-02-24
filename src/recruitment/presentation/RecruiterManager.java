@@ -27,20 +27,6 @@ public class RecruiterManager implements Serializable{
 
     private RecruiterDTO currentRecruiter;
     
-    public void setLUsername(String lUsername) {
-        this.lUsername = lUsername;
-    }
-    public String getLUsername() {
-        return lUsername;
-    }
-    
-    public void setLPassword(String lPassword) {
-        this.lPassword = lPassword;
-    }
-    public String getLPassword() {
-        return lPassword;
-    }
-    
     public boolean getSuccess() {
         return error == null;
     }
@@ -64,10 +50,25 @@ public class RecruiterManager implements Serializable{
         return currentRecruiter;
     }
     
+    public void setLUsername(String lUsername) {
+        this.lUsername = lUsername;
+    }
+    public String getLUsername() {
+        return lUsername;
+    }
+    
+    public void setLPassword(String lPassword) {
+        this.lPassword = lPassword;
+    }
+    public String getLPassword() {
+        return lPassword;
+    }
+    
     public String login() {
         try {
             error = null;
             currentRecruiter = databaseFacade.findRecruiter(lUsername, lPassword);
+            return "success";
         }
         catch (Exception e) {
             handleException(e);

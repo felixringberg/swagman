@@ -10,9 +10,13 @@
             <to-view-id>/error.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
-            <if>#{recruiterManager.currentRecruiter != null}</if>
+            <from-action>#{recruiterManager.login}</from-action>
+            <from-outcome>success</from-outcome>
             <to-view-id>/home_recruiter.xhtml</to-view-id>
-            <else-if>#{applicantManager.currentApplicant != null}</else-if>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{applicantManager.login}</from-action>
+            <from-outcome>success</from-outcome>
             <to-view-id>/home_applicant.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
