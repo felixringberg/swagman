@@ -75,4 +75,10 @@ public class RecruiterManager implements Serializable{
         
         return JSFFIX;
     }
+    
+    public String logout() {
+        currentRecruiter = null;
+        
+        return JSFFIX;
+    }
 }

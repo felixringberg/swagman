@@ -81,6 +81,12 @@ public class ApplicantManager implements Serializable{
         return JSFFIX;
     }
     
+    public String logout() {
+        currentApplicant = null;
+        
+        return JSFFIX;
+    }
+    
     // Setters and getters for recruiting applicant
     public void setRFirstname(String rFirstname) {
         this.rFirstname = rFirstname;
