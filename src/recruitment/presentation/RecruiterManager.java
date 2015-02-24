@@ -9,7 +9,6 @@ import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
-import recruitment.business.ApplicantDTO;
 import recruitment.business.RecruiterDTO;
 import recruitment.integration.DatabaseFacade;
 

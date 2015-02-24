@@ -9,19 +9,19 @@
     <h:body>
         <h1>There was an error.</h1>
         <c:choose>
-            <c:when test="#{loginManager.error.cause != null}">
-                <h3><h:outputText value="#{recruitingManager.error.cause.message}"/></h3>
+            <c:when test="#{recruiterManager.error.cause != null}">
+                <h3><h:outputText value="#{recruiterManager.error.cause.message}"/></h3>
             </c:when>
             <c:otherwise>
                 <h3><h:outputText value="#{recruitingManager.error.message}"/></h3>
             </c:otherwise>
         </c:choose>
         <c:choose>
-            <c:when test="#{loginManager.error.cause != null}">
-                <h3><h:outputText value="#{loginManager.error.cause.message}"/></h3>
+            <c:when test="#{applicantManager.error.cause != null}">
+                <h3><h:outputText value="#{applicantManager.error.cause.message}"/></h3>
             </c:when>
             <c:otherwise>
-                <h3><h:outputText value="#{loginManager.error.message}"/></h3>
+                <h3><h:outputText value="#{applicantManager.error.message}"/></h3>
             </c:otherwise>
         </c:choose>
         <a href="index.xhtml">Back to main page</a>
