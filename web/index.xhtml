@@ -6,6 +6,7 @@
         <title>KTH Application Service Index</title>
 
         <link href="layout.css" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript" src="index.js"></script>
     </h:head>
     <h:body>
         <div id="contentbox">
@@ -21,7 +22,7 @@
                     <br/>
                     <h:inputSecret id="loginpass" value="#{recruiterManager.LPassword}"/>
                     <br/><br/>
-                    <h:commandButton value="Login as Recruiter" action="#{recruiterManager.login}"/>
+                    <h:commandButton value="Login as Recruiter" onclick="validateLoginFormInput();" action="#{recruiterManager.login}"/>
                 </h:form>
                 <p/>
                 <h2 class="headline1">Login as Applicant:</h2>
@@ -34,7 +35,7 @@
                     <br/>
                     <h:inputSecret id="loginpass" value="#{applicantManager.LPassword}"/>
                     <br/><br/>
-                    <h:commandButton value="Login as Applicant" action="#{applicantManager.login}"/>
+                    <h:commandButton value="Login as Applicant" onclick="validateLoginFormInput();" action="#{applicantManager.login}"/>
                 </h:form>
                 <p/>
             </div>
@@ -65,7 +66,7 @@
                     <br/>
                     <h:inputText id="password" value="#{applicantManager.RPassword}"/>
                     <br/><br/>
-                    <h:commandButton value="Register" action="#{applicantManager.createApplicant}"/>
+                    <h:commandButton value="Register" onclick="validateApplicantFormInput();" action="#{applicantManager.createApplicant}"/>
                 </h:form>
             </div>
         </div>
