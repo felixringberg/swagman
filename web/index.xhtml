@@ -11,49 +11,61 @@
         <div id="contentbox">
             <div id="innercontent">
                 <p/>
-                <h2 class="headline1">Login</h2>
+                <h2 class="headline1">Login as Recruiter:</h2>
                 <h:form class="loginform">
                     <h:outputLabel for="loginuser" value="Username: " class="labelfont"/>
                     <br/>
-                    <h:inputText id="loginuser" value="#{loginManager.LUsername}"/>
+                    <h:inputText id="loginuser" value="#{recruiterManager.LUsername}"/>
                     <br/><br/>
                     <h:outputLabel for="loginpass" value="Password: "/>
                     <br/>
-                    <h:inputSecret id="loginpass" value="#{loginManager.LPassword}"/>
+                    <h:inputSecret id="loginpass" value="#{recruiterManager.LPassword}"/>
                     <br/><br/>
-                    <h:commandButton value="Login as applicant" action="#{loginManager.loginApplicant}"/>
-                    <h:commandButton value="Login as recruiter" action="#{loginManager.loginRecruiter}"/>
+                    <h:commandButton value="Login as Recruiter" action="#{recruiterManager.login}"/>
+                </h:form>
+                <p/>
+                <h2 class="headline1">Login as Applicant:</h2>
+                <h:form class="loginform">
+                    <h:outputLabel for="loginuser" value="Username: " class="labelfont"/>
+                    <br/>
+                    <h:inputText id="loginuser" value="#{applicantManager.LUsername}"/>
+                    <br/><br/>
+                    <h:outputLabel for="loginpass" value="Password: "/>
+                    <br/>
+                    <h:inputSecret id="loginpass" value="#{applicantManager.LPassword}"/>
+                    <br/><br/>
+                    <h:commandButton value="Login as Applicant:" action="#{applicantManager.login}"/>
                 </h:form>
                 <p/>
             </div>
             <div id="innercontent">
-                <h2 class="headline1">Account Creation</h2>
+                <h2 class="headline1">Account Creation:</h2>
                 <h:form class="creationform">
                     <h:outputLabel for="firstname" value="First Name: "/>
                     <br/>
-                    <h:inputText id="firstname" value="#{recruitingManager.RFirstname}"/>
+                    <h:inputText id="firstname" value="#{applicantManager.RFirstname}"/>
                     <br/><br/>
                     <h:outputLabel for="lastname" value="Last Name: "/> 
                     <br/>
-                    <h:inputText id="lastname" value="#{recruitingManager.RLastname}"/>
+                    <h:inputText id="lastname" value="#{applicantManager.RLastname}"/>
                     <br/><br/>
                     <h:outputLabel for="dateofbirth" value="Date of Birth: "/> 
                     <br/>
-                    <h:inputText id="dateofbirth" value="#{recruitingManager.RDateofbirth}"/>
+                    <h:inputText id="dateofbirth" value="#{applicantManager.RDateofbirth}"/>
                     <br/><br/>
                     <h:outputLabel for="email" value="Email: "/> 
                     <br/>
-                    <h:inputText id="email" value="#{recruitingManager.REmail}"/>
+                    <h:inputText id="email" value="#{applicantManager.REmail}"/>
                     <br/><br/>
                     <h:outputLabel for="username" value="Username: "/> 
                     <br/>
-                    <h:inputText id="username" value="#{recruitingManager.RUsername}"/>
+                    <h:inputText id="username" value="#{applicantManager.RUsername}"/>
                     <br/><br/>
                     <h:outputLabel for="password" value="Password: "/> 
                     <br/>
-                    <h:inputText id="password" value="#{recruitingManager.RPassword}"/>
+                    <h:inputText id="password" value="#{applicantManager.RPassword}"/>
                     <br/><br/>
-                    <h:commandButton value="Register" action="#{recruitingManager.createApplicant}"/>
+                    <h:commandButton value="Register" action="#{applicantManager.createApplicant}"/>
                 </h:form>
             </div>
         </div>
