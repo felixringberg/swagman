@@ -5,13 +5,16 @@
  */
 package recruitment.business;
 
+import java.sql.Time;
+import java.sql.Date;
+
 /**
  *
  * @author Marcus
  */
 public interface LogEntryDTO {
     public int getId();
-    public String getTime();
-    public String getDate();
+    public Time getTime();
+    public Date getDate();
     public String getMessage();
 }

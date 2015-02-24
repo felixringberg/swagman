@@ -6,6 +6,8 @@
 package recruitment.business;
 
 import java.io.Serializable;
+import java.sql.Date;
+import java.sql.Time;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,9 +23,21 @@ public class LogEntry implements Serializable, LogEntryDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String logtime;
-    private String logdate;
+    private Time logtime;
+    private Date logdate;
     private String message;
+    
+    public LogEntry() {
+        
+    }
+    public LogEntry(String message) {
+        this.message = message;
+        
+        long timeMillis = System.currentTimeMillis();
+        this.logtime = new Time(timeMillis);
+        this.logdate = new Date(timeMillis);
+        
+    }
     
     @Override
     public int getId() {
@@ -34,25 +48,32 @@ public class LogEntry implements Serializable, LogEntryDTO {
         this.id = id;
     }
     
+    /**
+     * 
+     * @return the time of the log entry creation 
+     */
     @Override
-    public String getTime(){
+    public Time getTime(){
         return logtime;
     }
-    public void setTime(String time){
-        this.logtime = time;
+    public void setTime(Time logtime){
+        this.logtime = logtime;
     }
     
+    /**
+     * 
+     * @return the date of the log entry creation 
+     */
     @Override
-    public String getDate(){
+    public Date getDate(){
         return logdate;
     }
-    public void setDate(String date){
+    public void setDate(Date date){
         this.logdate = date;
     }
     
     @Override
     public String getMessage(){
-        
         return message;
     }
     public void setMessage(String message){

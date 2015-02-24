@@ -6,7 +6,6 @@
 package recruitment.business;
 
 import java.io.Serializable;
-import javax.mail.internet.InternetAddress;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 

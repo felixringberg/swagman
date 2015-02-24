@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import recruitment.business.Applicant;
 import recruitment.business.ApplicantDTO;
+import recruitment.business.LogEntry;
 import recruitment.business.Recruiter;
 import recruitment.business.RecruiterDTO;
 import recruitment.business.ValidationException;
@@ -32,7 +33,7 @@ public class DatabaseFacade {
         else {
             ApplicantDTO newApplicant = new Applicant(firstname, lastname, 
                     dateofbirth, email, username, password);
-            
+            em.persist(new LogEntry("New account created with username: " + username));
             em.persist(newApplicant);
             
             return newApplicant;
@@ -42,17 +43,28 @@ public class DatabaseFacade {
     public ApplicantDTO findApplicant(String username, String password) throws ValidationException {
         ApplicantDTO foundApplicant =  em.find(Applicant.class, username);
         
-        if(foundApplicant != null && foundApplicant.getPassword().equals(password))
+        if(foundApplicant != null && foundApplicant.getPassword().equals(password)) {
+            em.persist(new LogEntry(username + " tried to log in, and succeeded"));
             return foundApplicant;
-        else
+            
+        }
+        else {
+            em.persist(new LogEntry(username + " tried to log in, but failed"));
             throw new ValidationException("Wrong username or password");
+        }
     }
     
     public RecruiterDTO findRecruiter(String username, String password) throws ValidationException {
         RecruiterDTO foundRecruiter =  em.find(Recruiter.class, username);
-        if(foundRecruiter != null && foundRecruiter.getPassword().equals(password))
+        
+        if(foundRecruiter != null && foundRecruiter.getPassword().equals(password)) {
+            em.persist(new LogEntry(username + " tried to log in, and succeeded"));
             return foundRecruiter;
-        else
+            
+        }
+        else {
+            em.persist(new LogEntry(username + " tried to log in, but failed"));
             throw new ValidationException("Wrong username or password");
+        }
     }
 }
