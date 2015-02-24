@@ -6,16 +6,20 @@
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
-            <if>#{!recruitingManager.success}</if>
+            <if>#{!recruiterManager.success}</if>
             <to-view-id>/error.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
-            <if>#{!loginManager.success}</if>
+            <if>#{!applicantManager.success}</if>
             <to-view-id>/error.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
-            <if>#{loginManager.currentApplicant != null}</if>
-            <to-view-id>/home.xhtml</to-view-id>
+            <if>#{recruiterManager.currentRecruiter != null}</if>
+            <to-view-id>/home_recruiter.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <if>#{applicantManager.currentApplicant != null}</if>
+            <to-view-id>/home_applicant.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
 </faces-config>
