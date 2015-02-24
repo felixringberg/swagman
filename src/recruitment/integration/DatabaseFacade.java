@@ -33,7 +33,7 @@ public class DatabaseFacade {
         else {
             ApplicantDTO newApplicant = new Applicant(firstname, lastname, 
                     dateofbirth, email, username, password);
-            em.persist(new LogEntry("New account created with username: " + username));
+            em.persist(new LogEntry("New applicant created with username: " + username));
             em.persist(newApplicant);
             
             return newApplicant;
@@ -44,12 +44,12 @@ public class DatabaseFacade {
         ApplicantDTO foundApplicant =  em.find(Applicant.class, username);
         
         if(foundApplicant != null && foundApplicant.getPassword().equals(password)) {
-            em.persist(new LogEntry(username + " tried to log in, and succeeded"));
+            em.persist(new LogEntry(username + "  succeeded login as applicant"));
             return foundApplicant;
             
         }
         else {
-            em.persist(new LogEntry(username + " tried to log in, but failed"));
+            em.persist(new LogEntry(username + " failed login as applicant"));
             throw new ValidationException("Wrong username or password");
         }
     }
@@ -58,12 +58,12 @@ public class DatabaseFacade {
         RecruiterDTO foundRecruiter =  em.find(Recruiter.class, username);
         
         if(foundRecruiter != null && foundRecruiter.getPassword().equals(password)) {
-            em.persist(new LogEntry(username + " tried to log in, and succeeded"));
+            em.persist(new LogEntry(username + " succeeded login as recruiter"));
             return foundRecruiter;
             
         }
         else {
-            em.persist(new LogEntry(username + " tried to log in, but failed"));
+            em.persist(new LogEntry(username + " failed login as recruiter"));
             throw new ValidationException("Wrong username or password");
         }
     }
