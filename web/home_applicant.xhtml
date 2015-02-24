@@ -11,6 +11,7 @@
 	<div id="contentbox">
             <h2 class="headline1">Welcome back!</h2>
             <h:outputText id="currAcctNo" value="#{applicantManager.currentApplicant.username}"/>
+            <h:commandButton value="Logout" action="#{applicantManager.logout}"/>
         </div> 
     </h:body>
 </html>
