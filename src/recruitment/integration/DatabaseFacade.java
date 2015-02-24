@@ -30,7 +30,7 @@ public class DatabaseFacade {
             throw new EntityExistsException("Account already exists with username " + username);
         }
         else {
-            Applicant newApplicant = new Applicant(firstname, lastname, 
+            ApplicantDTO newApplicant = new Applicant(firstname, lastname, 
                     dateofbirth, email, username, password);
             
             em.persist(newApplicant);
@@ -40,7 +40,7 @@ public class DatabaseFacade {
     }
     
     public ApplicantDTO findApplicant(String username, String password) throws ValidationException {
-        Applicant foundApplicant =  em.find(Applicant.class, username);
+        ApplicantDTO foundApplicant =  em.find(Applicant.class, username);
         
         if(foundApplicant != null && foundApplicant.getPassword().equals(password))
             return foundApplicant;
@@ -49,8 +49,7 @@ public class DatabaseFacade {
     }
     
     public RecruiterDTO findRecruiter(String username, String password) throws ValidationException {
-        Recruiter foundRecruiter =  em.find(Recruiter.class, username);
-        
+        RecruiterDTO foundRecruiter =  em.find(Recruiter.class, username);
         if(foundRecruiter != null && foundRecruiter.getPassword().equals(password))
             return foundRecruiter;
         else
