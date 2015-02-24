@@ -6,20 +6,28 @@
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
-            <if>#{!recruiterManager.success}</if>
-            <to-view-id>/error.xhtml</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <if>#{!applicantManager.success}</if>
+            <if>#{!recruiterManager.success || !applicantManager.success}</if>
             <to-view-id>/error.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <if>#{recruiterManager.currentRecruiter != null}</if>
             <to-view-id>/home_recruiter.xhtml</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <if>#{applicantManager.currentApplicant != null}</if>
+            <else-if>#{applicantManager.currentApplicant != null}</else-if>
             <to-view-id>/home_applicant.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/home_recruiter.xhtml</from-view-id>
+        <navigation-case>
+            <if>#{recruiterManager.currentRecruiter == null}</if>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/home_applicant.xhtml</from-view-id>
+        <navigation-case>
+            <if>#{applicantManager.currentApplicant == null}</if>
+            <to-view-id>/index.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
 </faces-config>

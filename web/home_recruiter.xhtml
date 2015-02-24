@@ -9,9 +9,11 @@
     </h:head>
     <h:body>
 	<div id="contentbox">
-            <h2 class="headline1">Welcome back!</h2>
+            <h2 class="headline1">Welcome back, recruiter!</h2>
             <h:outputText id="currAcctNo" value="#{recruiterManager.currentRecruiter.username}"/>
-            <h:commandButton value="Logout" action="#{recruiterManager.logout}"/>
+            <h:form>
+                <h:commandButton value="Logout #{recruiterManager.currentRecruiter.username}" action="#{recruiterManager.logout}"/>
+            </h:form>
         </div> 
     </h:body>
 </html>
