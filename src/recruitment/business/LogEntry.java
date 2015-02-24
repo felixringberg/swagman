@@ -21,10 +21,11 @@ public class LogEntry implements Serializable, LogEntryDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String time;
-    private String date;
+    private String logtime;
+    private String logdate;
     private String message;
-
+    
+    @Override
     public int getId() {
         return id;
     }
@@ -33,20 +34,23 @@ public class LogEntry implements Serializable, LogEntryDTO {
         this.id = id;
     }
     
+    @Override
     public String getTime(){
-        return time;
+        return logtime;
     }
     public void setTime(String time){
-        this.time = time;
+        this.logtime = time;
     }
     
+    @Override
     public String getDate(){
-        return date;
+        return logdate;
     }
     public void setDate(String date){
-        this.date = date;
+        this.logdate = date;
     }
     
+    @Override
     public String getMessage(){
         
         return message;
