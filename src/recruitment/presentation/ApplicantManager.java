@@ -17,20 +17,69 @@ import recruitment.integration.DatabaseFacade;
  * Har många set- och get-metoder som används av index.html
  * @author Felix
  */
-@Named("recruitingManager")
+@Named("applicantManager")
 @SessionScoped
-public class RecruitingManager implements Serializable{
+public class ApplicantManager implements Serializable{
     private final String JSFFIX = "";
     
     @EJB
     private DatabaseFacade databaseFacade;
     private Exception error;
     
+    private String lUsername, lPassword;
     // the registering applicant's info
     private String rFirstname, rLastname, rDateofbirth, rEmail, rUsername, rPassword;
     
     private ApplicantDTO currentApplicant;
     
+    public void setCurrentApplicant(ApplicantDTO currentApplicant) {
+        this.currentApplicant = currentApplicant;
+    }
+    public ApplicantDTO getCurrentApplicant() {
+        return currentApplicant;
+    }
+    
+    // Error handling
+    private void handleException(Exception e) {
+        e.printStackTrace(System.err);
+        error = e;
+    }
+    
+    public boolean getSuccess() {
+        return error == null;
+    }
+    public void setError(Exception error) {
+        this.error = error;
+    }
+    public Exception getError() {
+        return error;
+    }
+    
+    // Setters and getters for applicants logging in
+    public void setLUsername(String lUsername) {
+        this.lUsername = lUsername;
+    }
+    public String getLUsername() {
+        return lUsername;
+    }
+    
+    public void setLPassword(String lPassword) {
+        this.lPassword = lPassword;
+    }
+    public String getLPassword() {
+        return lPassword;
+    }
+    
+    public String login() {
+        try {
+            currentApplicant = databaseFacade.findApplicant(lUsername, lPassword);
+        }
+        catch (Exception e) {
+            handleException(e);
+        }
+        
+        return JSFFIX;
+    }
     
     // Setters and getters for recruiting applicant
     public void setRFirstname(String rFirstname) {
@@ -75,21 +124,6 @@ public class RecruitingManager implements Serializable{
         return rPassword;
     }
     
-    private void handleException(Exception e) {
-        e.printStackTrace(System.err);
-        error = e;
-    }
-    
-    public boolean getSuccess() {
-        return error == null;
-    }
-    public void setError(Exception error) {
-        this.error = error;
-    }
-    public Exception getError() {
-        return error;
-    }
-    
     public String createApplicant() {
         try {
             currentApplicant = databaseFacade.registerApplicant(rFirstname, 
@@ -98,8 +132,6 @@ public class RecruitingManager implements Serializable{
         catch (Exception e) {
             handleException(e);
         }
-        finally {
-            return JSFFIX; // Pga. en bugg måste en tom sträng returneras, aldrig null
-        }
+        return JSFFIX; // Because of a bug a  Pga. en bugg måste en tom sträng returneras, aldrig null
     }
 }

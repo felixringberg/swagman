@@ -17,16 +17,15 @@ import recruitment.integration.DatabaseFacade;
  *
  * @author Felix Ringberg <felixri at kth.se>
  */
-@Named("loginManager")
+@Named("recruiterManager")
 @SessionScoped
-public class LogInManager implements Serializable{
+public class RecruiterManager implements Serializable{
     private final String JSFFIX = "";
     @EJB
     private DatabaseFacade databaseFacade;
     private String lUsername, lPassword;
     private Exception error;
-    
-    private ApplicantDTO currentApplicant;
+
     private RecruiterDTO currentRecruiter;
     
     public void setLUsername(String lUsername) {
@@ -59,13 +58,6 @@ public class LogInManager implements Serializable{
         error = e;
     }
     
-    public void setCurrentApplicant(ApplicantDTO currentApplicant) {
-        this.currentApplicant = currentApplicant;
-    }
-    public ApplicantDTO getCurrentApplicant() {
-        return currentApplicant;
-    }
-    
     public void setCurrentRecruiter(RecruiterDTO currentRecruiter) {
         this.currentRecruiter = currentRecruiter;
     }
@@ -73,18 +65,7 @@ public class LogInManager implements Serializable{
         return currentRecruiter;
     }
     
-    public String loginApplicant() {
-        try {
-            currentApplicant = databaseFacade.findApplicant(lUsername, lPassword);
-        }
-        catch (Exception e) {
-            handleException(e);
-        }
-        
-        return JSFFIX;
-    }
-    
-    public String loginRecruiter() {
+    public String login() {
         try {
             currentRecruiter = databaseFacade.findRecruiter(lUsername, lPassword);
         }
