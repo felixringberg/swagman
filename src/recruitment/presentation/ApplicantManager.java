@@ -71,6 +71,7 @@ public class ApplicantManager implements Serializable{
     
     public String login() {
         try {
+            error = null;
             currentApplicant = databaseFacade.findApplicant(lUsername, lPassword);
         }
         catch (Exception e) {
@@ -125,6 +126,7 @@ public class ApplicantManager implements Serializable{
     
     public String createApplicant() {
         try {
+            error = null;
             currentApplicant = databaseFacade.registerApplicant(rFirstname, 
                 rLastname, rDateofbirth, rEmail, rUsername, rPassword);
         }

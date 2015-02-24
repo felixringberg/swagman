@@ -66,6 +66,7 @@ public class RecruiterManager implements Serializable{
     
     public String login() {
         try {
+            error = null;
             currentRecruiter = databaseFacade.findRecruiter(lUsername, lPassword);
         }
         catch (Exception e) {
