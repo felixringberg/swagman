@@ -5,10 +5,7 @@
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
-        <navigation-case>
-            <if>#{!recruiterManager.success || !applicantManager.success}</if>
-            <to-view-id>/error.xhtml</to-view-id>
-        </navigation-case>
+        
         <navigation-case>
             <from-action>#{recruiterManager.login}</from-action>
             <from-outcome>success</from-outcome>
