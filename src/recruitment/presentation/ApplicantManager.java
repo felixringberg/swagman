@@ -23,7 +23,7 @@ public class ApplicantManager implements Serializable{
     
     @EJB
     private DatabaseFacade databaseFacade;
-    private Exception error;
+    private Exception exceptionLogin, exceptionRegister;
     
     private String lUsername, lPassword;
     // the registering applicant's info
@@ -38,20 +38,30 @@ public class ApplicantManager implements Serializable{
         return currentApplicant;
     }
     
-    // Error handling
-    private void handleException(Exception e) {
+    // Error handling for login
+    private void handleExceptionLogin(Exception e) {
         e.printStackTrace(System.err);
-        error = e;
+        exceptionLogin = e;
     }
     
-    public boolean getSuccess() {
-        return error == null;
+    public void setExceptionLogin(Exception exceptionLogin) {
+        this.exceptionLogin = exceptionLogin;
     }
-    public void setError(Exception error) {
-        this.error = error;
+    public Exception getExceptionLogin() {
+        return exceptionLogin;
     }
-    public Exception getError() {
-        return error;
+    
+    // Error handling for registering
+    private void handleExceptionRegister(Exception e) {
+        e.printStackTrace(System.err);
+        exceptionRegister = e;
+    }
+    
+    public void setExceptionRegister(Exception exceptionRegister) {
+        this.exceptionRegister = exceptionRegister;
+    }
+    public Exception getExceptionRegister() {
+        return exceptionRegister;
     }
     
     // Setters and getters for applicants logging in
@@ -71,12 +81,12 @@ public class ApplicantManager implements Serializable{
     
     public String login() {
         try {
-            error = null;
+            exceptionLogin = null;
             currentApplicant = databaseFacade.findApplicant(lUsername, lPassword);
             return "success";
         }
         catch (Exception e) {
-            handleException(e);
+            handleExceptionLogin(e);
         }
         
         return JSFFIX;
@@ -133,12 +143,12 @@ public class ApplicantManager implements Serializable{
     
     public String createApplicant() {
         try {
-            error = null;
+            exceptionRegister = null;
             currentApplicant = databaseFacade.registerApplicant(rFirstname, 
                 rLastname, rDateofbirth, rEmail, rUsername, rPassword);
         }
         catch (Exception e) {
-            handleException(e);
+            handleExceptionRegister(e);
         }
         return JSFFIX; // Because of a bug a  Pga. en bugg måste en tom sträng returneras, aldrig null
     }

@@ -23,24 +23,21 @@ public class RecruiterManager implements Serializable{
     @EJB
     private DatabaseFacade databaseFacade;
     private String lUsername, lPassword;
-    private Exception error;
+    private Exception exceptionLogin;
 
     private RecruiterDTO currentRecruiter;
     
-    public boolean getSuccess() {
-        return error == null;
-    }
-    
-    public void setError(Exception error) {
-        this.error = error;
-    }
-    public Exception getError() {
-        return error;
-    }
-    
-    private void handleException(Exception e) {
+    //Error handling for logging in as a recruiter
+    private void handleExceptionLogin(Exception e) {
         e.printStackTrace(System.err);
-        error = e;
+        exceptionLogin = e;
+    }
+    
+    public void setExceptionLogin(Exception exceptionLogin) {
+        this.exceptionLogin = exceptionLogin;
+    }
+    public Exception getExceptionLogin() {
+        return exceptionLogin;
     }
     
     public void setCurrentRecruiter(RecruiterDTO currentRecruiter) {
@@ -66,12 +63,12 @@ public class RecruiterManager implements Serializable{
     
     public String login() {
         try {
-            error = null;
+            exceptionLogin = null;
             currentRecruiter = databaseFacade.findRecruiter(lUsername, lPassword);
             return "success";
         }
         catch (Exception e) {
-            handleException(e);
+            handleExceptionLogin(e);
         }
         
         return JSFFIX;

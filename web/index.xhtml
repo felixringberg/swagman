@@ -15,7 +15,7 @@
                 <p/>
                 <h2 class="headline1">Login as Recruiter:</h2>
                 <p/>
-                #{recruiterManager.error.message}
+                #{recruiterManager.exceptionLogin.message}
                 <h:form class="loginform">
                     <h:outputLabel for="loginuser" value="Username: " class="labelfont"/>
                     <br/>
@@ -26,13 +26,14 @@
                     <h:inputSecret id="loginpass" value="#{recruiterManager.LPassword}"/>
                     <br/><br/>
                     <h:commandButton value="Login as Recruiter" onclick="validateLoginFormInput();" action="#{recruiterManager.login}">
-                        <f:actionListener binding ="#{applicantManager.error = null}"/>
+                        <f:actionListener binding ="#{applicantManager.exceptionLogin = null}"/>
+                        <f:actionListener binding ="#{applicantManager.exceptionRegister = null}"/>
                     </h:commandButton>
                 </h:form>
                 <p/>
                 <h2 class="headline1">Login as Applicant:</h2>
                 <p/>
-                #{applicantManager.error.message}
+                #{applicantManager.exceptionLogin.message}
                 <h:form class="loginform">
                     <h:outputLabel for="loginuser" value="Username: " class="labelfont"/>
                     <br/>
@@ -43,13 +44,16 @@
                     <h:inputSecret id="loginpass" value="#{applicantManager.LPassword}"/>
                     <br/><br/>
                     <h:commandButton value="Login as Applicant" onclick="validateLoginFormInput();" action="#{applicantManager.login}">
-                        <f:actionListener binding ="#{recruiterManager.error = null}"/>
+                        <f:actionListener binding ="#{recruiterManager.exceptionLogin = null}"/>
+                        <f:actionListener binding ="#{applicantManager.exceptionRegister = null}"/>
                     </h:commandButton>
                 </h:form>
                 <p/>
             </div>
             <div id="innercontent">
                 <h2 class="headline1">Account Creation:</h2>
+                <p/>
+                #{applicantManager.exceptionRegister.message}
                 <h:form class="creationform">
                     <h:outputLabel for="firstname" value="First Name: "/>
                     <br/>
@@ -76,8 +80,8 @@
                     <h:inputText id="password" value="#{applicantManager.RPassword}"/>
                     <br/><br/>
                     <h:commandButton value="Register" onclick="validateApplicantFormInput();" action="#{applicantManager.createApplicant}">
-                        <f:actionListener binding ="#{recruiterManager.error = null}"/>
-                        <f:actionListener binding ="#{applicantManager.error = null}"/>
+                        <f:actionListener binding ="#{recruiterManager.exceptionLogin = null}"/>
+                        <f:actionListener binding ="#{applicantManager.exceptionLogin = null}"/>
                     </h:commandButton>
                 </h:form>
             </div>
