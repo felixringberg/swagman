@@ -5,26 +5,34 @@
  */
 
 function validateApplicantFormInput(){
-    var username_applicant = document.getElementById("username").value;
-    var password_applicant = document.getElementById("password").value;
-
+    alert("Entered validateApplicantFormInput()");
+    var username_applicant = document.getElementById('username').value;
+    var password_applicant = document.getElementById('password').value;
+    alert("After getElementById");
     if(username_applicant.length() < 6){
-        alert("Username to short");
+        alert("Username too short");
     }
 }
 
 function validateLoginFormInput(){
-    var username = document.getElementById("loginuser").value;
-    var password = document.getElementById("loginpass").value;
+    var username = document.getElementById('loginuser').value;
+    var password = document.getElementById('loginpass').value;
     
-    if(username == ""){
-        if(password == "")
+    if(username == "") {
+        if(password == "") {
             alert("Enter a username and password.");
-        else
-            alert("Enter a username.")
+            document.getElementById('usernameLabel').innerHTML = 'Username: Required field!';
+            document.getElementById('passwordLabel').innerHTML = 'Password: Required field!';
+        }
+        else {
+            alert("Enter a username.");
+            document.getElementById('usernameLabel').innerHTML = 'Username: Required field!';
+        }
     }
-    else if(password == "")
+    else if(password == "") {
         alert("Enter a password.");
+        document.getElementById('passwordLabel').innerHTML = 'Password: Required field!';
+    }
 }
 
 
