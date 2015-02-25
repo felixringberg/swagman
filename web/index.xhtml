@@ -16,7 +16,7 @@
                 <h2 class="headline1">Login as Recruiter:</h2>
                 <p/>
                 #{recruiterManager.exceptionLogin.message}
-                <h:form class="loginform">
+                <h:form id="loginFormR" class="loginform">
                     <h:outputLabel for="loginuser" value="Username: " class="labelfont"/>
                     <br/>
                     <h:inputText id="loginuser" value="#{recruiterManager.LUsername}"/>
@@ -34,7 +34,7 @@
                 <h2 class="headline1">Login as Applicant:</h2>
                 <p/>
                 #{applicantManager.exceptionLogin.message}
-                <h:form class="loginform">
+                <h:form id="loginFormA" class="loginform">
                     <h:outputLabel for="loginuser" value="Username: " class="labelfont"/>
                     <br/>
                     <h:inputText id="loginuser" value="#{applicantManager.LUsername}"/>
@@ -54,7 +54,7 @@
                 <h2 class="headline1">Account Creation:</h2>
                 <p/>
                 #{applicantManager.exceptionRegister.message}
-                <h:form class="creationform">
+                <h:form id="registrationForm" class="creationform">
                     <h:outputLabel for="firstname" value="First Name: "/>
                     <br/>
                     <h:inputText id="firstname" value="#{applicantManager.RFirstname}"/>
@@ -71,7 +71,7 @@
                     <br/>
                     <h:inputText id="email" value="#{applicantManager.REmail}"/>
                     <br/><br/>
-                    <h:outputLabel for="username" value="Username: "/> 
+                    <h:outputLabel id="usernameLabel" for="username" value="Username: "></h:outputLabel> 
                     <br/>
                     <h:inputText id="username" value="#{applicantManager.RUsername}"/>
                     <br/><br/>

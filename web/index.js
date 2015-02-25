@@ -6,32 +6,30 @@
 
 function validateApplicantFormInput(){
     alert("Entered validateApplicantFormInput()");
-    var username_applicant = document.getElementById('username').value;
-    var password_applicant = document.getElementById('password').value;
-    alert("After getElementById");
-    if(username_applicant.length() < 6){
+    var username_applicant = document.registrationForm["registrationForm:username"].value;
+    var password_applicant = document.registrationForm["registrationForm:password"].value;
+    if(username_applicant.length < 6){
         alert("Username too short");
+        document.registrationForm["registrationForm:usernameLabel"].innerHTML = "must be atleast 6 characters";
     }
+    alert("Exit validation");
 }
 
-function validateLoginFormInput(){
+function validateLoginFormAInput(){
     var username = document.getElementById('loginuser').value;
     var password = document.getElementById('loginpass').value;
     
     if(username == "") {
         if(password == "") {
-            alert("Enter a username and password.");
-            document.getElementById('usernameLabel').innerHTML = 'Username: Required field!';
-            document.getElementById('passwordLabel').innerHTML = 'Password: Required field!';
+            document.loginFormA["loginFormA:loginuserLabel"].innerHTML = 'Username: Required field!';
+            document.loginFormA["loginFormA:loginpassLabel"].innerHTML = 'Password: Required field!';
         }
         else {
-            alert("Enter a username.");
-            document.getElementById('usernameLabel').innerHTML = 'Username: Required field!';
+            document.loginFormA["loginFormA:loginuserLabel"].innerHTML = 'Username: Required field!';
         }
     }
     else if(password == "") {
-        alert("Enter a password.");
-        document.getElementById('passwordLabel').innerHTML = 'Password: Required field!';
+        document.loginFormA["loginFormA:loginpassLabel"].innerHTML = 'Password: Required field!';
     }
 }
 
