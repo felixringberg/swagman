@@ -14,6 +14,21 @@
             <h:form>
                 <h:commandButton value="Logout #{applicantManager.currentApplicant.username}" action="#{applicantManager.logout}"/>
             </h:form>
+            
+        <h:form>
+            <select>
+                <option value="hotdoggriller">Hot Dog Griller</option>
+                <option value="ridemaintenence">Ride Maintenance</option>
+                <option value="machineengineering">Machine Engineering</option>
+                <option value="sanitarytechnician">Sanitary Technician</option>
+            </select>
+            <h:outputText value="Years of Expertise:"/>
+            <h:inputText id="asdf"/>
+             <h:commandButton value="Trap!" action="#{applicantManager.logout}"/>
+        </h:form>
         </div> 
+        
+        
+        
     </h:body>
 </html>
