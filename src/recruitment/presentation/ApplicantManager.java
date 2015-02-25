@@ -146,6 +146,7 @@ public class ApplicantManager implements Serializable{
             exceptionRegister = null;
             currentApplicant = databaseFacade.registerApplicant(rFirstname, 
                 rLastname, rDateofbirth, rEmail, rUsername, rPassword);
+            return "success";
         }
         catch (Exception e) {
             handleExceptionRegister(e);
