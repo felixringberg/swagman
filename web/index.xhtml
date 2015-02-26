@@ -77,7 +77,7 @@
                     <br/><br/>
                     <h:outputLabel for="password" value="Password: "/> 
                     <br/>
-                    <h:inputText id="password" value="#{applicantManager.RPassword}"/>
+                    <h:inputSecret id="password" value="#{applicantManager.RPassword}"/>
                     <br/><br/>
                     <h:commandButton value="Register" onclick="validateApplicantFormInput();" action="#{applicantManager.createApplicant}">
                         <f:actionListener binding ="#{recruiterManager.exceptionLogin = null}"/>
