@@ -1,0 +1,22 @@
+body{
+    font-family: Estrangelo Edessa, Estrangelo Edessa Regular, Arial;
+}
+
+#contentbox{
+    margin-top: 280px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1075px;
+    height: 600px;
+    padding-left: 25px;
+}
+
+h2.headline1{
+    font-size: 150%;
+}
+
+#innercontent{
+    width: 350px;
+    float: left;
+}
+

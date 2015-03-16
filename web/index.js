@@ -5,14 +5,14 @@
  */
 
 function validateApplicantFormInput(){
-    //alert("Entered validateApplicantFormInput()");
+    alert("Entered validateApplicantFormInput()");
     var username_applicant = document.registrationForm["registrationForm:username"].value;
     var password_applicant = document.registrationForm["registrationForm:password"].value;
     if(username_applicant.length < 6){
-        alert("Username too short");
-        document.registrationForm["registrationForm:usernameLabel"].innerHTML = "must be atleast 6 characters";
+        alert("JS: Username too short");
+        document.getElementById["usernameLabel"].innerHTML = "Username: must be atleast 6 characters";
     }
-    //alert("Exit validation");
+    alert("Exit validation");
 }
 
 function validateLoginFormAInput(){

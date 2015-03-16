@@ -15,8 +15,8 @@
     </h:head>
     <h:body>
 	<div id="contentbox">
-            <h2 class="headline1">Welcome applicant!</h2>
-            <h:outputText id="currAcctNo" value="#{applicantManager.currentApplicant.username}"/>
+            <h2 class="headline1">Welcome #{applicantManager.currentApplicant.username}!</h2>
+            <!--<h:outputText id="currAcctNo" value="#{applicantManager.currentApplicant.username}"/>-->
             <h:form>
                 <h:commandButton value="Logout #{applicantManager.currentApplicant.username}" action="#{applicantManager.logout}"/>
             </h:form>
