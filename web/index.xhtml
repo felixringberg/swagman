@@ -2,14 +2,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>KTH Application Service Index</title>
 
-        <link href="layout.css" rel="stylesheet" type="text/css"/>
+        <link href="standardlayout.css" rel="stylesheet" type="text/css"/>
         
     </h:head>
     <h:body>
+        <ui:insert name="header">
+            <ui:include src="/header.xhtml"/>
+        </ui:insert>
         <div id="contentbox">
             <div id="innercontent">
                 <p/>
@@ -86,9 +90,9 @@
                 </h:form>
             </div>
         </div>
-        <script type="text/javascript" src="index2.js"></script>
+        <script type="text/javascript" src="index.js"></script>
     </h:body>
-    <footer>
-        <center>© 2015, KTH Application Service</center>
-    </footer>
+    <ui:insert name="footer">
+            <ui:include src="/footer.xhtml"/>
+    </ui:insert>
 </html>
