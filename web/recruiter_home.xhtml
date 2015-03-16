@@ -7,9 +7,11 @@
         <title>KTH Application Service Index</title>
         
         <link href="layout.css" rel="stylesheet" type="text/css"/>
-        <c:if test="${recruiterManager.currentRecruiter == null}">
-            <meta http-equiv="refresh" content="0;url=index.xhtml"/>
-        </c:if>
+        <c:choose>
+            <c:when test="#{recruiterManager.currentRecruiter == null}">
+                <meta http-equiv="refresh" content="0;url=index.xhtml"/>
+            </c:when>
+        </c:choose>
     </h:head>
     <h:body>
 	<div id="contentbox">
