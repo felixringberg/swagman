@@ -31,6 +31,7 @@ public class RecruiterManager implements Serializable{
     private void handleExceptionLogin(Exception e) {
         e.printStackTrace(System.err);
         exceptionLogin = e;
+        databaseFacade.createLogEntry(e.getMessage(), "Exception");
     }
     
     public void setExceptionLogin(Exception exceptionLogin) {

@@ -42,6 +42,7 @@ public class ApplicantManager implements Serializable{
     private void handleExceptionLogin(Exception e) {
         e.printStackTrace(System.err);
         exceptionLogin = e;
+        databaseFacade.createLogEntry(e.getMessage(), "Exception");
     }
     
     public void setExceptionLogin(Exception exceptionLogin) {
@@ -55,6 +56,7 @@ public class ApplicantManager implements Serializable{
     private void handleExceptionRegister(Exception e) {
         e.printStackTrace(System.err);
         exceptionRegister = e;
+        databaseFacade.createLogEntry(e.getMessage(), "Exception");
     }
     
     public void setExceptionRegister(Exception exceptionRegister) {

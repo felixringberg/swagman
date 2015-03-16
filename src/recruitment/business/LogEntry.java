@@ -26,17 +26,18 @@ public class LogEntry implements Serializable, LogEntryDTO {
     private Time logtime;
     private Date logdate;
     private String message;
+    private String logType;
     
     public LogEntry() {
         
     }
-    public LogEntry(String message) {
+    public LogEntry(String message, String logType) {
         this.message = message;
         
         long timeMillis = System.currentTimeMillis();
         this.logtime = new Time(timeMillis);
         this.logdate = new Date(timeMillis);
-        
+        this.logType = logType;
     }
     
     @Override
@@ -50,7 +51,7 @@ public class LogEntry implements Serializable, LogEntryDTO {
     
     /**
      * 
-     * @return the time of the log entry creation 
+     * @return the time of the log entry creation, in milliseconds
      */
     @Override
     public Time getTime(){
@@ -62,7 +63,7 @@ public class LogEntry implements Serializable, LogEntryDTO {
     
     /**
      * 
-     * @return the date of the log entry creation 
+     * @return the date of the log entry creation, in milliseconds
      */
     @Override
     public Date getDate(){
@@ -78,6 +79,18 @@ public class LogEntry implements Serializable, LogEntryDTO {
     }
     public void setMessage(String message){
         this.message = message;
+    }
+    
+    /**
+     * 
+     * @return the log type as a string i.e. 'registering', 'exception', 'login'
+     */
+    @Override
+    public String getLogType(){
+        return logType;
+    }
+    public void setLogType(String logType){
+        this.logType = logType;
     }
 
     @Override

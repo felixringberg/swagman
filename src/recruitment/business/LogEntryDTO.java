@@ -17,4 +17,5 @@ public interface LogEntryDTO {
     public Time getTime();
     public Date getDate();
     public String getMessage();
+    public String getLogType();
 }
