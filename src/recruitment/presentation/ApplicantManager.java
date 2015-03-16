@@ -6,10 +6,13 @@
 package recruitment.presentation;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import recruitment.business.ApplicantDTO;
+import recruitment.business.CompetenceDTO;
 import recruitment.integration.DatabaseFacade;
 
 /**
@@ -23,11 +26,15 @@ public class ApplicantManager implements Serializable{
     
     @EJB
     private DatabaseFacade databaseFacade;
-    private Exception exceptionLogin, exceptionRegister;
+    private Exception exceptionLogin, exceptionRegister, exceptionGeneral;
     
     private String lUsername, lPassword;
     // the registering applicant's info
     private String rFirstname, rLastname, rDateofbirth, rEmail, rUsername, rPassword;
+    
+    private ArrayList<CompetenceDTO> competences;
+    private float experienceYears;
+    
     
     private ApplicantDTO currentApplicant;
     
@@ -36,6 +43,13 @@ public class ApplicantManager implements Serializable{
     }
     public ApplicantDTO getCurrentApplicant() {
         return currentApplicant;
+    }
+    
+    // General error handling
+    private void handleExceptionGeneral(Exception e) {
+        e.printStackTrace(System.err);
+        exceptionGeneral = e;
+        databaseFacade.createLogEntry("Exception " + e.getClass().getName() + ": " + e.getMessage(), "Exception");
     }
     
     // Error handling for login
@@ -154,5 +168,27 @@ public class ApplicantManager implements Serializable{
             handleExceptionRegister(e);
         }
         return JSFFIX; // Because of a bug a  Pga. en bugg måste en tom sträng returneras, aldrig null
+    }
+    
+    public ArrayList<CompetenceDTO> getCompetenceList() {
+        ArrayList<CompetenceDTO> competences = null;
+        try {
+            competences = databaseFacade.getCompetences();
+        }
+        catch (Exception e) {
+            handleExceptionGeneral(e);
+        }
+        return competences;
+    }
+    
+    public void setExperienceYears (float experienceYears) {
+        this.experienceYears = experienceYears;
+    }
+    public float getExperienceYears() {
+        return experienceYears;
+    }
+    
+    public void saveExperience(int competence) {
+        databaseFacade.saveExperience(currentApplicant.getUsername(), competence, experienceYears);
     }
 }
