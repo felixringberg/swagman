@@ -5,12 +5,15 @@
  */
 package recruitment.integration;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import recruitment.business.Applicant;
 import recruitment.business.ApplicantDTO;
+import recruitment.business.CompetenceDTO;
 import recruitment.business.LogEntry;
 import recruitment.business.Recruiter;
 import recruitment.business.RecruiterDTO;
@@ -68,11 +71,24 @@ public class DatabaseFacade {
         }
     }
     
-    public String[] getCompetences(String username, String password) throws ValidationException {
-        String[] competences;
-        competences = em.createQuery("", );
+    /**
+     * @return the list of all the competences in the database
+     */
+    public ArrayList<CompetenceDTO> getCompetences() {
+        ArrayList competences = (ArrayList) em.createQuery("SELECT c FROM COMPETENCE c").getResultList();
         
         return competences;
+    }
+    
+    /**
+     * 
+     * @param username
+     * @param competence
+     * @param years 
+     */
+    public void saveExperience(String username, int competence, float years) {
+        em.createQuery("INSERT INTO EXPERIENCE (APPLICANT, COMPETENCE, YEARS)"
+                     + "VALUES(" + username + ", " + competence + "," + years + ")");
     }
     
     /**
