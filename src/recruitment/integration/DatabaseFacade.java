@@ -33,7 +33,7 @@ public class DatabaseFacade {
         else {
             ApplicantDTO newApplicant = new Applicant(firstname, lastname, 
                     dateofbirth, email, username, password);
-            em.persist(new LogEntry("New applicant created with username: " + username));
+            createLogEntry("New applicant created with username: " + username, "RegisterSuccess");
             em.persist(newApplicant);
             
             return newApplicant;
@@ -44,12 +44,12 @@ public class DatabaseFacade {
         ApplicantDTO foundApplicant =  em.find(Applicant.class, username);
         
         if(foundApplicant != null && foundApplicant.getPassword().equals(password)) {
-            em.persist(new LogEntry(username + "  succeeded login as applicant"));
+            createLogEntry(username + " succeeded login as applicant", "ApplicantLoginSuccess");
             return foundApplicant;
             
         }
         else {
-            em.persist(new LogEntry(username + " failed login as applicant"));
+            createLogEntry(username + " failed login as applicant", "ApplicantLoginFailure");
             throw new ValidationException("Wrong username or password");
         }
     }
@@ -58,13 +58,22 @@ public class DatabaseFacade {
         RecruiterDTO foundRecruiter =  em.find(Recruiter.class, username);
         
         if(foundRecruiter != null && foundRecruiter.getPassword().equals(password)) {
-            em.persist(new LogEntry(username + " succeeded login as recruiter"));
+            createLogEntry(username + " succeeded login as recruiter", "RecruiterLoginSuccess");
             return foundRecruiter;
             
         }
         else {
-            em.persist(new LogEntry(username + " failed login as recruiter"));
+            createLogEntry(username + " failed login as recruiter", "RecruiterLoginFailure");
             throw new ValidationException("Wrong username or password");
         }
+    }
+    
+    /**
+     * Creates a log entry in the database with the input logMessage and logType strings
+     * @param logMessage the message to put in the database with the log entry
+     * @param logType the type of log entry, e.g. RecruiterLoginSuccess, Exception
+     */
+    public void createLogEntry(String logMessage, String logType) {
+        em.persist(new LogEntry(logMessage, logType));
     }
 }
