@@ -74,8 +74,8 @@ public class DatabaseFacade {
     /**
      * @return the list of all the competences in the database
      */
-    public ArrayList<CompetenceDTO> getCompetences() {
-        ArrayList competences = (ArrayList) em.createQuery("SELECT c FROM COMPETENCE c").getResultList();
+    public List<CompetenceDTO> getCompetences() {
+        List competences = em.createQuery("SELECT c FROM Competence c").getResultList();
         
         return competences;
     }
@@ -87,8 +87,12 @@ public class DatabaseFacade {
      * @param years 
      */
     public void saveExperience(String username, int competence, float years) {
-        em.createQuery("INSERT INTO EXPERIENCE (APPLICANT, COMPETENCE, YEARS)"
-                     + "VALUES(" + username + ", " + competence + "," + years + ")");
+        em.createNativeQuery("INSERT INTO EXPERIENCE (APPLICANT, COMPETENCE, YEARS)"
+                     + " VALUES (?1, ?2, ?3)").setParameter(1,username).setParameter(2, competence)
+                .setParameter(3, years).executeUpdate();
+        
+        createLogEntry(username + " added " + years + " years experience of"
+                + "competence ID " + competence, "AddedExperience");
     }
     
     /**

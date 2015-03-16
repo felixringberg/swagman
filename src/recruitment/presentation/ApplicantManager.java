@@ -32,9 +32,8 @@ public class ApplicantManager implements Serializable{
     // the registering applicant's info
     private String rFirstname, rLastname, rDateofbirth, rEmail, rUsername, rPassword;
     
-    private ArrayList<CompetenceDTO> competences;
+    private int competence;
     private float experienceYears;
-    
     
     private ApplicantDTO currentApplicant;
     
@@ -50,6 +49,13 @@ public class ApplicantManager implements Serializable{
         e.printStackTrace(System.err);
         exceptionGeneral = e;
         databaseFacade.createLogEntry("Exception " + e.getClass().getName() + ": " + e.getMessage(), "Exception");
+    }
+    
+    public void setExceptionGeneral(Exception exceptionGeneral) {
+        this.exceptionGeneral = exceptionGeneral;
+    }
+    public Exception getExceptionGeneral() {
+        return exceptionGeneral;
     }
     
     // Error handling for login
@@ -167,18 +173,25 @@ public class ApplicantManager implements Serializable{
         catch (Exception e) {
             handleExceptionRegister(e);
         }
-        return JSFFIX; // Because of a bug a  Pga. en bugg måste en tom sträng returneras, aldrig null
+        return JSFFIX; // Because of a bug return empty string
     }
     
-    public ArrayList<CompetenceDTO> getCompetenceList() {
-        ArrayList<CompetenceDTO> competences = null;
+    public List<CompetenceDTO> getCompetenceList() {
+        List<CompetenceDTO> competenceList = null;
         try {
-            competences = databaseFacade.getCompetences();
+            competenceList = databaseFacade.getCompetences();
         }
         catch (Exception e) {
             handleExceptionGeneral(e);
         }
-        return competences;
+        return competenceList;
+    }
+    
+    public void setCompetence (int competence) {
+        this.competence = competence;
+    }
+    public int getCompetence() {
+        return competence;
     }
     
     public void setExperienceYears (float experienceYears) {
@@ -188,7 +201,13 @@ public class ApplicantManager implements Serializable{
         return experienceYears;
     }
     
-    public void saveExperience(int competence) {
-        databaseFacade.saveExperience(currentApplicant.getUsername(), competence, experienceYears);
+    public String saveExperience() {
+        try {
+            databaseFacade.saveExperience(currentApplicant.getUsername(), competence, experienceYears);
+        }
+        catch (Exception e) {
+            handleExceptionGeneral(e);
+        }
+        return "";
     }
 }
