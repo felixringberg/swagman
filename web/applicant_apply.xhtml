@@ -2,11 +2,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>KTH Application Service Index</title>
         
-        <link href="layout.css" rel="stylesheet" type="text/css"/>
+        <link href="standardlayout.css" rel="stylesheet" type="text/css"/>
         <c:choose>
             <c:when test="#{applicantManager.currentApplicant == null}">
                 <meta http-equiv="refresh" content="0;url=index.xhtml"/>
@@ -14,6 +15,9 @@
         </c:choose>
     </h:head>
     <h:body>
+        <ui:insert name="header">
+            <ui:include src="/header.xhtml"/>
+        </ui:insert>
 	<div id="contentbox">
             <h2 class="headline1">Application Form</h2>
             <!--<h:outputText id="currAcctNo" value="#{applicantManager.currentApplicant.username}"/>-->
@@ -34,12 +38,12 @@
                 <option value="sanitarytechnician">Sanitary Technician</option>
             </select>-->
             <h:outputText value="Years of Expertise:"/>
-            <h:inputText id="experienceYears"/>
+            <h:inputText id="experienceYears" value="#{applicantManager.experienceYears}"/>
              <h:commandButton value="Add" action="#{applicantManager.saveExperience}"/>
         </h:form>
         </div>
     </h:body>
-    <footer>
-        <center>© 2015, KTH Application Service</center>
-    </footer>
+    <ui:insert name="footer">
+            <ui:include src="/footer.xhtml"/>
+    </ui:insert>
 </html>
