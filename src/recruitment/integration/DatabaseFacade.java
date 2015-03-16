@@ -68,6 +68,13 @@ public class DatabaseFacade {
         }
     }
     
+    public String[] getCompetences(String username, String password) throws ValidationException {
+        String[] competences;
+        competences = em.createQuery("", );
+        
+        return competences;
+    }
+    
     /**
      * Creates a log entry in the database with the input logMessage and logType strings
      * @param logMessage the message to put in the database with the log entry
