@@ -23,14 +23,19 @@
             
         <h:form>
             <select>
+                <c:forEach items="#{applicantManager.getCompetences}" var="entry">
+                    <option value="${entry.id}">${entry.competence}</option>
+                </c:forEach>
+            </select>
+            <!--<select>
                 <option value="hotdoggriller">Hot Dog Griller</option>
                 <option value="ridemaintenence">Ride Maintenance</option>
                 <option value="machineengineering">Machine Engineering</option>
                 <option value="sanitarytechnician">Sanitary Technician</option>
-            </select>
+            </select>-->
             <h:outputText value="Years of Expertise:"/>
             <h:inputText id="experienceYears"/>
-             <h:commandButton value="Add" action="#"/>
+             <h:commandButton value="Add" action="#{applicantManager.saveExperience}"/>
         </h:form>
         </div>
     </h:body>
