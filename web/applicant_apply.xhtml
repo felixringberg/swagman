@@ -6,15 +6,14 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
+        <title>KTH Application Service Index</title>
+        
+        <link href="standardlayout.css" rel="stylesheet" type="text/css"/>
         <c:choose>
             <c:when test="#{applicantManager.currentApplicant == null}">
                 <meta http-equiv="refresh" content="0;url=index.xhtml"/>
             </c:when>
         </c:choose>
-        
-        <title>KTH Application Service Index</title>
-        
-        <link href="standardlayout.css" rel="stylesheet" type="text/css"/>
     </h:head>
     <h:body>
         <ui:insert name="header">
