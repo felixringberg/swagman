@@ -83,8 +83,7 @@
                     <br/>
                     <h:inputSecret id="password" value="#{applicantManager.RPassword}"/>
                     <br/><br/>
-                    <h:commandButton value="Validate" onclick="validateApplicantFormInput();"> 
-                    <h:commandButton value="Register" action="#{applicantManager.createApplicant}"/>
+                    <h:commandButton value="Register" onclick="validateApplicantFormInput();" action="#{applicantManager.createApplicant}">
                         <f:actionListener binding ="#{recruiterManager.exceptionLogin = null}"/>
                         <f:actionListener binding ="#{applicantManager.exceptionLogin = null}"/>
                     </h:commandButton>

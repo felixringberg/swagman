@@ -42,7 +42,7 @@ function validateApplicantFormInput(){
     if(!pattern.test(dob_applicant)){
         dob = "Date of birth must be YYYY-MM-DD.";
     }
-    if(fn == null && ln == null && dob == null && us == null && pw == null){
+    if(fn === "" && ln === "" && dob === "" && us === "" && pw === ""){
         alert("Looks fine to me.");
     }
     if(fn != "" || ln != "" || dob != "" || us != "" || pw != ""){
@@ -57,25 +57,28 @@ function validateApplicantFormInput(){
 }
 
 function validateLoginFormAInput(){
-    var username = document.loginFormA('loginFormA:loginuserA').value;
-    var password = document.loginFormA('loginFormA:loginpassA').value;
+    alert("inside A");
+    var usernameA = document.loginFormA("loginFormA:loginuserA").value;
+    var passwordA = document.loginFormA("loginFormA:loginpassA").value;
     
-    if(username == "") {
+    alert("deeper in A");
+    if(usernameA === "") {
         alert("You need to write a username.");
     }
-    if(password == "") {
+    if(passwordA === "") {
         alert("You need to write a password.");
     }
 }
 
 function validateLoginFormRInput(){
-    var username = document.loginFormR('loginFormR:loginuserR').value;
-    var password = document.loginFormR('loginFormR:loginpassR').value;
-    
-    if(username == "") {
+    alert("inside R");
+    var usernameR = document.loginFormR("loginFormR:loginuserR").value;
+    var passwordR = document.loginFormR("loginFormR:loginpassR").value;
+    alert("deeper in R");
+    if(usernameR === "") {
         alert("You need to write a username.");
     }
-    if(password == "") {
+    if(passwordR === "") {
         alert("You need to write a password.");
     }
 }
