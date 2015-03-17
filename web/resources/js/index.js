@@ -58,8 +58,8 @@ function validateApplicantFormInput(){
 
 function validateLoginFormAInput(){
     alert("inside A");
-    var usernameA = document.loginFormA("loginFormA:loginuserA").value;
-    var passwordA = document.loginFormA("loginFormA:loginpassA").value;
+    var usernameA = document.loginFormA["loginFormA:loginuserA"].value;
+    var passwordA = document.loginFormA["loginFormA:loginpassA"].value;
     
     alert("deeper in A");
     if(usernameA === "") {
@@ -72,8 +72,8 @@ function validateLoginFormAInput(){
 
 function validateLoginFormRInput(){
     alert("inside R");
-    var usernameR = document.loginFormR("loginFormR:loginuserR").value;
-    var passwordR = document.loginFormR("loginFormR:loginpassR").value;
+    var usernameR = document.loginFormR["loginFormR:loginuserR"].value;
+    var passwordR = document.loginFormR["loginFormR:loginpassR"].value;
     alert("deeper in R");
     if(usernameR === "") {
         alert("You need to write a username.");
