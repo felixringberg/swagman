@@ -22,35 +22,36 @@ function validateApplicantFormInput(){
     
     
     if(username_applicant.length < 6){
-        us = "The username is too short.";
+        us = "The username is too short.\n";
         if(username_applicant.length === 0){
-            us = "You must specify a username.";
+            us = "You must specify a username.\n";
         }
     }
     if(password_applicant.length < 6){
-        pw = "The password is too short.";
+        pw = "The password is too short.\n";
         if(password_applicant.length === 0){
-            pw = "You must specify a password.";
+            pw = "You must specify a password.\n";
         }
     }
     if(firstname_applicant.length === 0){
-        fn = "You must specify a firstname.";
+        fn = "You must specify a firstname.\n";
     }
     if(lastname_applicant.length === 0){
-        ln = "You must specify a lastname.";
+        ln = "You must specify a lastname.\n";
     }
     if(!pattern.test(dob_applicant)){
-        dob = "Date of birth must be YYYY-MM-DD.";
+        dob = "Date of birth must be YYYY-MM-DD.\n";
     }
     if(fn === "" && ln === "" && dob === "" && us === "" && pw === ""){
         alert("Looks fine to me.");
     }
     if(fn != "" || ln != "" || dob != "" || us != "" || pw != ""){
-        alert(fn +"\n"+
-              ln +"\n"+
-              dob +"\n"+
-              us +"\n"+
+        alert(fn +
+              ln +
+              dob +
+              us +
               pw);
+        return false;
     }
     
     //alert("Exit validation");
@@ -59,22 +60,38 @@ function validateApplicantFormInput(){
 function validateLoginFormAInput(){
     var usernameA = document.loginFormA["loginFormA:loginuserA"].value;
     var passwordA = document.loginFormA["loginFormA:loginpassA"].value;
+    
+    var usA = "";
+    var passA = "";
+    
     if(usernameA === "") {
-        alert("You need to write a username.");
+        usA = "You need to specify a username.\n";
     }
     if(passwordA === "") {
-        alert("You need to write a password.");
+        passA = "You need to specify a password.\n";
+    }
+    if(usA !== "" || passA !== ""){
+        alert(usA + passA);
+        return false;
     }
 }
 
 function validateLoginFormRInput(){
     var usernameR = document.loginFormR["loginFormR:loginuserR"].value;
     var passwordR = document.loginFormR["loginFormR:loginpassR"].value;
+    
+    var usR = "";
+    var passR = "";
+    
     if(usernameR === "") {
-        alert("You need to write a username.");
+        usR = "You need to specify a username.\n";
     }
     if(passwordR === "") {
-        alert("You need to write a password.");
+        passR = "You need to specify a password.\n";
+    }
+    if(usR !== "" || passR !== ""){
+        alert(usR + passR);
+        return false;
     }
 }
 

@@ -29,7 +29,7 @@
                     <br/>
                     <h:inputSecret id="loginpassR" value="#{recruiterManager.LPassword}"/>
                     <br/><br/>
-                    <h:commandButton value="Login as Recruiter" onclick="validateLoginFormRInput();" action="#{recruiterManager.login}">
+                    <h:commandButton value="Login as Recruiter" onclick="return validateLoginFormRInput();" action="#{recruiterManager.login}">
                         <f:actionListener binding ="#{applicantManager.exceptionLogin = null}"/>
                         <f:actionListener binding ="#{applicantManager.exceptionRegister = null}"/>
                     </h:commandButton>
@@ -47,7 +47,7 @@
                     <br/>
                     <h:inputSecret id="loginpassA" value="#{applicantManager.LPassword}"/>
                     <br/><br/>
-                    <h:commandButton value="Login as Applicant" onclick="validateLoginFormAInput();" action="#{applicantManager.login}">
+                    <h:commandButton value="Login as Applicant" onclick="return validateLoginFormAInput();" action="#{applicantManager.login}">
                         <f:actionListener binding ="#{recruiterManager.exceptionLogin = null}"/>
                         <f:actionListener binding ="#{applicantManager.exceptionRegister = null}"/>
                     </h:commandButton>
@@ -83,7 +83,7 @@
                     <br/>
                     <h:inputSecret id="password" value="#{applicantManager.RPassword}"/>
                     <br/><br/>
-                    <h:commandButton value="Register" onclick="validateApplicantFormInput();" action="#{applicantManager.createApplicant}">
+                    <h:commandButton value="Register" onclick="return validateApplicantFormInput();" action="#{applicantManager.createApplicant}">
                         <f:actionListener binding ="#{recruiterManager.exceptionLogin = null}"/>
                         <f:actionListener binding ="#{applicantManager.exceptionLogin = null}"/>
                     </h:commandButton>
