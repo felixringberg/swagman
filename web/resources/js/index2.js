@@ -5,10 +5,10 @@
  */
 
 function validateApplicantFormInput(){
-    alert("Entered validateApplicantFormInput()");
-    var username_applicant = document.getElementById['username'].value;
-    var password_applicant = document.getElementById['password'].value;
-    
+    //alert("Entered validateApplicantFormInput()");
+    var username_applicant = document.getElementById['registrationForm:username'].value;
+    var password_applicant = document.getElementById['registrationForm:password'].value;
+    alert("sofarsogood");
     if(username_applicant.length < 6){
         alert("JS: Username too short");
         document.getElementById['usernameLabel'].innerHTML = "must be atleast 6 characters";
