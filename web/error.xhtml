@@ -11,6 +11,7 @@
         <c:choose>
             <c:when test="#{applicantManager.exceptionGeneral.cause != null}">
                 <h3><h:outputText value="#{applicantManager.exceptionGeneral.cause.message}"/></h3>
+                ${applicantManager.exceptionGeneral = null}
             </c:when>
             <c:otherwise>
                 <h3><h:outputText value="#{applicantManager.exceptionGeneral.message}"/></h3>
