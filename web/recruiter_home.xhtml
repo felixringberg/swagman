@@ -5,14 +5,15 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>KTH Application Service Index</title>
-        
-        <link href="standardlayout.css" rel="stylesheet" type="text/css"/>
         <c:choose>
             <c:when test="#{recruiterManager.currentRecruiter == null}">
                 <meta http-equiv="refresh" content="0;url=index.xhtml"/>
             </c:when>
         </c:choose>
+        
+        <title>KTH Application Service Index</title>
+        
+        <link href="standardlayout.css" rel="stylesheet" type="text/css"/>
     </h:head>
     <h:body>
         <ui:insert name="header">
