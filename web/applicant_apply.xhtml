@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>KTH Application Service Index</title>
         
@@ -20,21 +21,21 @@
         </ui:insert>
 	<div id="contentbox">
             <h2 class="headline1">Application Form</h2>
-            <!--<h:outputText id="currAcctNo" value="#{applicantManager.currentApplicant.username}"/>-->
             <h:form>
                 <h:commandButton value="Logout #{applicantManager.currentApplicant.username}" action="#{applicantManager.logout}"/>
             </h:form>
             
-        <h:form>
-            <select>
-                <c:forEach items="#{applicantManager.getCompetenceList}" var="entry">
-                    <option value="${entry.id}">${entry.competence}</option>
-                </c:forEach>
-            </select>
-            <h:outputText value="Years of Expertise:"/>
-            <h:inputText id="experienceYears" value="#{applicantManager.experienceYears}"/>
-            <h:commandButton value="Add" action="#{applicantManager.saveExperience()}"/>
-        </h:form>
+            <h:form>
+                <h:selectOneMenu id="competences" value="#{applicantManager.competence}">
+                    <c:forEach items="#{applicantManager.getCompetenceList()}" var="entry" varStatus="loop">
+                        <f:selectItem itemLabel="${entry.competence}" itemValue="${entry.id}"/>
+                    </c:forEach>
+                </h:selectOneMenu>
+                <br/>
+                <h:outputText value="Years of Expertise:"/>
+                <h:inputText id="experienceYears" value="#{applicantManager.experienceYears}"/>
+                <h:commandButton value="Add" action="#{applicantManager.saveExperience}"/>
+            </h:form>
         </div>
     </h:body>
     <ui:insert name="footer">
