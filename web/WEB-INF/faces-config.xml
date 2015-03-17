@@ -42,9 +42,6 @@
             <if>#{applicantManager.currentApplicant == null}</if>
             <to-view-id>/index.xhtml</to-view-id>
         </navigation-case>
-        <navigation-case>
-            <if>#{applicantManager.exceptionGeneral != null}</if>
-            <to-view-id>/error.xhtml</to-view-id>
-        </navigation-case>
+        
     </navigation-rule>
 </faces-config>
