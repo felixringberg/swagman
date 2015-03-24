@@ -25,18 +25,25 @@
                 <h:commandButton value="Logout #{applicantManager.currentApplicant.username}" action="#{applicantManager.logout}"/>
             </h:form>
             
-            <h:form>
+            <h:form id="expform">
+            <br/>
                 <h:selectOneMenu id="competences" value="#{applicantManager.competence}">
                     <c:forEach items="#{applicantManager.getCompetenceList()}" var="entry" varStatus="loop">
                         <f:selectItem itemLabel="${entry.competence}" itemValue="${entry.id}"/>
                     </c:forEach>
                 </h:selectOneMenu>
                 <br/>
-                <h:outputText value="Years of Expertise:"/>
+                <br/>
+                <h:outputText value="Years of Expertise"/>
+                <br/>
                 <h:inputText id="experienceYears" value="#{applicantManager.experienceYears}"/>
-                <h:commandButton value="Add" action="#{applicantManager.saveExperience}"/>
+                <br/>
+                <br/>
+                <h:commandButton value="Add" onclick="return validateEXP();" action="#{applicantManager.saveExperience}"/>
+                
             </h:form>
         </div>
+        <h:outputScript library="js" name="apply.js"/>
     </h:body>
     <ui:insert name="footer">
             <ui:include src="/footer.xhtml"/>
