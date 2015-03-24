@@ -13,6 +13,7 @@ import javax.inject.Named;
 import recruitment.business.ApplicantDTO;
 import recruitment.business.CompetenceDTO;
 import recruitment.integration.DatabaseFacade;
+import recruitment.validator.DateOfBirth;
 
 /**
  * Har många set- och get-metoder som används av index.html
@@ -29,7 +30,10 @@ public class ApplicantManager implements Serializable{
     
     private String lUsername, lPassword;
     // the registering applicant's info
-    private String rFirstname, rLastname, rDateofbirth, rEmail, rUsername, rPassword;
+    private String rFirstname, rLastname;
+    @DateOfBirth
+    private String rDateofbirth;
+    private String rEmail, rUsername, rPassword;
     
     private int competence;
     private float experienceYears;
