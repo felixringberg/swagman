@@ -33,23 +33,6 @@ public class Applicant implements Serializable, ApplicantDTO {
     }
     public Applicant(String firstname, String lastname, String dateofbirth, String email, 
             String username, String password) throws ValidationException {
-        // Username validation
-        if(username.length() < 6)
-            throw new ValidationException("Username too short");
-        for(int i = 0; i < username.length(); i++)
-            if(!(Character.isDigit(username.charAt(i)) || Character.isLetter(username.charAt(i))))
-               throw new ValidationException("Usernames may only contain letters A-Z, a-z or numbers 0-9");
-        
-        // Password validation
-        if(password.length() < 6)
-            throw new ValidationException("Password too short");
-        for(int i = 0; i < password.length(); i++)
-            if(!(Character.isDigit(password.charAt(i)) || Character.isLetter(password.charAt(i))))
-               throw new ValidationException("Passwords may only contain letters A-Z, a-z or numbers 0-9");
-        
-        //Date of birth validation
-        if(dateofbirth.charAt(4) != '-' || dateofbirth.charAt(7) != '-')
-            throw new ValidationException("Enter date of birth in the form YYYY-MM-DD");
         
         this.firstname = firstname;
         this.lastname = lastname;
