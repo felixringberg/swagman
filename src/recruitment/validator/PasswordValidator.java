@@ -7,6 +7,7 @@ package recruitment.validator;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import recruitment.business.ValidationException;
 
 /**
  *
@@ -15,13 +16,18 @@ import javax.validation.ConstraintValidatorContext;
 public class PasswordValidator implements ConstraintValidator<Password, String>{
 
     @Override
-    public void initialize(Password constraintAnnotation) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public void initialize(Password constraintAnnotation) {}
 
     @Override
-    public boolean isValid(String value, ConstraintValidatorContext context) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean isValid(String password, ConstraintValidatorContext context) {
+        boolean charCheck = true;
+        
+        // Password validation
+        for(int i = 0; i < password.length(); i++)
+            if(!(Character.isDigit(password.charAt(i)) || Character.isLetter(password.charAt(i))))
+               charCheck = false; //throw new ValidationException("Passwords may only contain letters A-Z, a-z or numbers 0-9");
+        
+        return password.length() > 6  && charCheck;
     }
     
 }
