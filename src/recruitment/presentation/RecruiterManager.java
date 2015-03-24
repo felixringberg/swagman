@@ -9,6 +9,7 @@ import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
+import javax.validation.constraints.Size;
 import recruitment.business.RecruiterDTO;
 import recruitment.integration.DatabaseFacade;
 
@@ -22,7 +23,11 @@ public class RecruiterManager implements Serializable{
     private final String JSFFIX = "";
     @EJB
     private DatabaseFacade databaseFacade;
-    private String lUsername, lPassword;
+    
+    @Size(min=1, message="Please enter a username")
+    private String lUsername;
+    @Size(min=1, message="Please enter a username")
+    private String lPassword;
     private Exception exceptionLogin;
 
     private RecruiterDTO currentRecruiter;

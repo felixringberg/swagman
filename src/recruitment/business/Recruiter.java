@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import recruitment.validator.Password;
+import recruitment.validator.Username;
 
 /**
  *
@@ -18,7 +20,9 @@ import javax.persistence.Id;
 @Entity
 public class Recruiter implements Serializable, RecruiterDTO{
     @Id
+    @Username
     private String username;
+    @Password
     private String password;
 
     public Recruiter() {

@@ -8,6 +8,9 @@ package recruitment.business;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import recruitment.validator.DateOfBirth;
+import recruitment.validator.Password;
+import recruitment.validator.Username;
 
 /**
  *
@@ -17,9 +20,13 @@ import javax.persistence.Id;
 public class Applicant implements Serializable, ApplicantDTO {
     private static final long serialVersionUID = 1L;
     @Id
+    @Username
     private String username;
-    
-    private String firstname, lastname, email, password, dateofbirth;
+    @Password
+    private String password;
+    @DateOfBirth
+    private String dateofbirth;
+    private String firstname, lastname, email;
     
     public Applicant() {
         

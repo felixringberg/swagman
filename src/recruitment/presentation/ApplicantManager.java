@@ -10,10 +10,13 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
+import javax.validation.constraints.Size;
 import recruitment.business.ApplicantDTO;
 import recruitment.business.CompetenceDTO;
 import recruitment.integration.DatabaseFacade;
 import recruitment.validator.DateOfBirth;
+import recruitment.validator.Password;
+import recruitment.validator.Username;
 
 /**
  * Har många set- och get-metoder som används av index.html
@@ -28,12 +31,18 @@ public class ApplicantManager implements Serializable{
     private DatabaseFacade databaseFacade;
     private Exception exceptionLogin, exceptionRegister, exceptionGeneral;
     
-    private String lUsername, lPassword;
+    @Size(min=1, message="Please enter a username")
+    private String lUsername;
+    @Size(min=1, message="Please enter a password")
+    private String lPassword;
     // the registering applicant's info
-    private String rFirstname, rLastname;
+    private String rFirstname, rLastname, rEmail;
     @DateOfBirth
     private String rDateofbirth;
-    private String rEmail, rUsername, rPassword;
+    @Username
+    private String rUsername;
+    @Password
+    private String rPassword;
     
     private int competence;
     private float experienceYears;
