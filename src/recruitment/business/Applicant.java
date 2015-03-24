@@ -11,7 +11,7 @@ import javax.persistence.Id;
 
 /**
  *
- * @author Felix Ringberg <felixri at kth.se>
+ * @author Felix Ringberg
  */
 @Entity
 public class Applicant implements Serializable, ApplicantDTO {

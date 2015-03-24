@@ -7,7 +7,7 @@ package recruitment.business;
 
 /**
  *
- * @author Felix Ringberg <felixri at kth.se>
+ * @author Felix Ringberg
  */
 public class ValidationException extends Exception {
     public ValidationException(String msg) {

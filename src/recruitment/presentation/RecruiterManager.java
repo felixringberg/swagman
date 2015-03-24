@@ -14,7 +14,7 @@ import recruitment.integration.DatabaseFacade;
 
 /**
  *
- * @author Felix Ringberg <felixri at kth.se>
+ * @author Felix Ringberg
  */
 @Named("recruiterManager")
 @SessionScoped
