@@ -11,6 +11,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.validation.constraints.Size;
 import recruitment.business.Applicant;
 import recruitment.business.ApplicantDTO;
 import recruitment.business.CompetenceDTO;
@@ -18,6 +19,9 @@ import recruitment.business.LogEntry;
 import recruitment.business.Recruiter;
 import recruitment.business.RecruiterDTO;
 import recruitment.business.ValidationException;
+import recruitment.validator.DateOfBirth;
+import recruitment.validator.Password;
+import recruitment.validator.Username;
 
 /**
  * Klassen ska ha nån koppling till databasen. Den ska hämta och lägga upp data.
@@ -28,14 +32,31 @@ public class DatabaseFacade {
     @PersistenceContext(unitName = "recruitment")
     private EntityManager em;
     
+    @Size(min=1, message="Please enter a first name")
+    private String firstname;
+    @Size(min=1, message="Please enter a last name")
+    private String lastname;
+    @Username
+    private String username;
+    @Password
+    private String password;
+    @DateOfBirth
+    private String dateofbirth;
+    
     public ApplicantDTO registerApplicant(String firstname, String lastname, 
             String dateofbirth, String email, String username, String password) throws ValidationException {
         if(em.find(Applicant.class, username) != null) {
             throw new EntityExistsException("Account already exists with username " + username);
         }
         else {
-            ApplicantDTO newApplicant = new Applicant(firstname, lastname, 
-                    dateofbirth, email, username, password);
+            this.firstname = firstname;
+            this.lastname = lastname;
+            this.dateofbirth = dateofbirth;
+            this.username = username;
+            this.password = password;
+            
+            ApplicantDTO newApplicant = new Applicant(this.firstname, this.lastname, 
+                    this.dateofbirth, email, this.username, this.password);
             createLogEntry("New applicant created with username: " + username, "RegisterSuccess");
             em.persist(newApplicant);
             
